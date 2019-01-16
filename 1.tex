@@ -38,34 +38,34 @@
 
   \section{Introduction}
   \section{System Model}
-    \cite{ref1}
-    We consider an IoT cloud with two type of players:
-    \begin{enumerate}
-      \item End users, who want to process their sensors' data and send results to actuator.
-      \item IaaS providers, who provide computational resources for end users.
-    \end{enumerate}
-    We consider that measuremnts of sensors for service $s$ are performed and sent to processing units by rate of $\sum_{i=1}^{N_I} r_{i,s}$ and $r_{i,s}$ is sampeling rate processed by IaaS provider $i$ for service $s$, hence we use $\log(\sum_{i=1}^{N_I} r_{i,s})$ as a quality of experience measurement for user of service $s$.
-    Let $p_i$ be the price that should be paid to IaaS provider $i$ for unit of processing power and $F_s$ be the processing power required for each sensor sample of user $s$.
-    Then $p_i r_{i,s} F_s$ is price paid to IaaS provider $i$ by user of service $s$ and total cost for user of service $s$ is $\sum_{i=1}^{N_I}{p_i r_{i,s} F_s}$.
-    We define utility function for user of service $s$ as the difference between quality of experience indicator and his total cost:
+    % \cite{ref1}
+
+    % \begin{enumerate}
+      % \item
+      % \item
+    % \end{enumerate}
+    % We consider that measuremnts of sensors for service $s$ are performed and sent to processing units by rate of $\sum_{i=1}^{N_I} r_{i,s}$ and $r_{i,s}$ is sampeling rate processed by IaaS provider $i$ for service $s$, hence we use $\log(\sum_{i=1}^{N_I} r_{i,s})$ as a quality of experience measurement for user of service $s$.
+    % Let $p_i$ be the price that should be paid to IaaS provider $i$ for unit of processing power and $F_s$ be the processing power required for each sensor sample of user $s$.
+    % Then $p_i r_{i,s} F_s$ is price paid to IaaS provider $i$ by user of service $s$ and total cost for user of service $s$ is $\sum_{i=1}^{N_I}{p_i r_{i,s} F_s}$.
+    % We define utility function for user of service $s$ as the difference between quality of experience indicator and his total cost:
     \begin{equation}
       \varphi_s(R_s)=\log(\sum_{i=1}^{N_I} r_{i,s}) - \sum_{i=1}^{N_I}{p_i r_{i,s} F_s}
     \end{equation}
-    Where $R_s$ is $[r_{1,s}, \hdots, r_{N_I,s}]$ and $\lambda_{i,s}$s are descision variables for user $s$.
-    We assume that each user's serivce is characterized by its mean response time and it should be greater than $R_s^{max}$ to meet user's requirements.
-    Mean response time for service $s$ can be calculated as:
+    % Where $R_s$ is $[r_{1,s}, \hdots, r_{N_I,s}]$ and $\lambda_{i,s}$s are descision variables for user $s$.
+    % We assume that each user's serivce is characterized by its mean response time and it should be greater than $R_s^{max}$ to meet user's requirements.
+    % Mean response time for service $s$ can be calculated as:
     \begin{equation}
       t_s = \frac{1}{\sum_{i=1}^{N_I} r_{i,s}}\sum_{i=1}^{N_I}{r_{s,i}(t^{sensors}_{i,s} + t_{i,s} + t^{actuators}_{i,s})}
     \end{equation}
-    Where $t^{sensors}_{i,s}$ and $t^{actuators}_{i,s}$ are network delays from sensors to IaaS provider $i$ and from IaaS provider $i$ to actuator and $t_{i,s}$ is mean response time for service $s$ at IaaS provider $i$.
-    From queueing theory we know that for a M/M/1 queue with arival rate $\lambda$ and service rate $\mu$, mean response time is $\frac{1}{\mu - \lambda}$.
-    If we assume that $C_i$ is processing capasity of IaaS provider $i$ and $u_{i,s}$ is utilizaion of IaaS provider $i$ by service $s$ then for service $s$ on IaaS provider $i$ arival rate is $r_{i,s} R_s$ and service rate is $u_{i,s} C_i$, So $t_{i,s}$ can be written as follow:
+    % Where $t^{sensors}_{i,s}$ and $t^{actuators}_{i,s}$ are network delays from sensors to IaaS provider $i$ and from IaaS provider $i$ to actuator and $t_{i,s}$ is mean response time for service $s$ at IaaS provider $i$.
+    % From queueing theory we know that for a M/M/1 queue with arival rate $\lambda$ and service rate $\mu$, mean response time is $\frac{1}{\mu - \lambda}$.
+    % If we assume that $C_i$ is processing capasity of IaaS provider $i$ and $u_{i,s}$ is utilizaion of IaaS provider $i$ by service $s$ then for service $s$ on IaaS provider $i$ arival rate is $r_{i,s} R_s$ and service rate is $u_{i,s} C_i$, So $t_{i,s}$ can be written as follow:
     \begin{equation}
       t_{i,s} = \frac{1}{u_{i,s} C_i - r_{i,s} F_s}
     \end{equation}
-    Which should be greater than $r_s^{min}$.
-    To prevent IaaS provider from being saturated for user of service $s$ we consider that $r_{s,i} F_s \le 0.9 u_{i,s} C_i$.
-    Therefore each user try to solve following optimization problem:
+    % Which should be greater than $r_s^{min}$.
+    % To prevent IaaS provider from being saturated for user of service $s$ we consider that $r_{s,i} F_s \le 0.9 u_{i,s} C_i$.
+    % Therefore each user try to solve following optimization problem:
     \begin{subequations}
       \begin{align}
         &\max_{\Lambda_s} \varphi_s(R_s) \\
@@ -76,20 +76,19 @@
         &t_{j,s} +  \frac{1}{u_{j,s} C_j - r_{j,s} F_s} \le 0
       \end{align}
     \end{subequations}
-    \par
-    We consider two types of IaaS providers:
-    \begin{enumerate}
-      \item Usual servers placed in datacenters which has vast amount of computational power.
-      \item Wireless sensor gateways placed near sensors which has limited computational power, but may have less transmition delay.
-    \end{enumerate}
-    IaaS providers are paid for their processing power so their revenue is sum of all revenue come from services that has non-zero $\lambda_{i,s}$ and they pay for their electric power consumption.
-    So we define utility function of IaaS provider $i$ as follow:
+    % \par
+    % We consider two types of IaaS providers:sssssssssssssssssssssssssssss
+    % \begin{enumerate}
+    %   \item Usual servers placed in datacenters which has vast amount of computational power.
+    %   \item Wireless sensor gateways placed near sensors which has limited computational power, but may have less transmition delay.
+    % \end{enumerate}
+    % IaaS providers are paid for their processing power so their revenue is sum of all revenue come from services that has non-zero $\lambda_{i,s}$ and they pay for their electric power consumption.
+    % So we define utility function of IaaS provider $i$ as follow:
     \begin{equation}
       \varphi_i(p_i, U_i, \Lambda_S^i)=\sum_{s=1}^{N_S}{p_i \lambda_{i,s}^i R_s} - P^{electrical}(P_i(\sum_{s=1}^{N_S}(u_{i,s})))
     \end{equation}
-    Where $u_{i,s}$ is utilization of IaaS provider $i$ assigned to user service $s$, $U_i$ is $[u_{i,1}, \hdots, u_{i,N_S}]$ and $\Lambda_S^i$ is conjector of $\Lambda_S$ by IaaS provider $i$.
-    In this paper we consider that electrical power of IaaS provider $i$ is a function of its total utilization.
-    We denote this function by $P_i(u_i)$ and as assumed in \cite{ref1}, we can write $P_i(.)$ as:
+
+
     \begin{equation}
       P_i(u_i) = P_i^{idle} + (P_i^{max} - P_i^{idle}) u_i
     \end{equation}
@@ -104,8 +103,8 @@
         &\Lambda_s^i \in SOL(F_s), \forall s
       \end{align}
     \end{subequations}
-    We can define an exact potential function for this game.
-    As explained in ** function $\pi$ is an exact potential function if for --- we have:
+    % We can define an exact potential function for this game.
+    % As explained in ** function $\pi$ is an exact potential function if for --- we have:
     \begin{equation}
       \pi(x^i,x^{-i}) - \pi(y^i,x^{-i}) = \varphi_i(x^i,x^{-i}) - \varphi_i(y^i,x^{-i})
     \end{equation}
