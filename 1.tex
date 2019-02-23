@@ -148,11 +148,46 @@
      \end{align}
 
      \begin{align}
-       \tau_k = \sum_{i=1}^{l_e}u_s^i \\
+       \tau_k = \sum_{i=1}^{l_e}x_{k,i}^e(\tau_i^{e,tr}+\frac{w_k}{r_i^e}) \\ \notag
+       +\sum_{j=1}^{l_f}x_{k,j}^f(\tau_j^{f,tr}+\frac{w_k}{r_j^f}) \\ \notag
+       +\sum_{h=1}^{l_c}x_{k,h}^c(\tau_k^{c,tr}+\frac{w_k}{r_h^c})
      \end{align}
     \end{subequations}
 
+    \subsection{Constraints}
+    \begin{subequations}
+      \begin{align}
+        \tau_k \le \delta_k \quad\quad \forall k\in\{1,2,...,l_t\}
+      \end{align}
+      \begin{align}
+        \sum_{k=1}^{l_t}x_{k,h}^c w_k \le c_h^c \quad\quad \forall h\in\{1,2,...,l_c\}
+      \end{align}
+      \begin{align}
+        \sum_{k=1}^{l_t}x_{k,j}^f w_k \le c_j^f \quad\quad \forall j\in\{1,2,...,l_f\}
+      \end{align}
+      \begin{align}
+        \sum_{k=1}^{l_t}x_{k,i}^e w_k \le c_i^e \quad\quad \forall i\in\{1,2,...,l_e\}
+      \end{align}
+      \begin{align}
+        \sum_{i=1}^{l_e}x_{k,i}^e+\sum_{j=1}^{l_f}x_{k,j}^f+\sum_{h=1}^{l_c}x_{k,h}^c=1 \quad\quad \forall k\in\{1,2,...,l_t\}
+      \end{align}
+    \end{subequations}
 
+    \subsection{Objective}
+
+    \begin{subequations}
+        \begin{align}
+          p_k = \sum_{i=1}^{l_e}x_{k,i}^e C(v_i^e, t_k) \\ \notag
+          +\sum_{j=1}^{l_f}x_{k,j}^f C(v_j^f, t_k) \\ \notag
+          +\sum_{h=1}^{l_c}x_{k,h}^c C(v_h^c, t_k)
+        \end{align}
+    \end{subequations}
+    \begin{subequations}
+    \begin{align}
+      \min{\sum_{k=1}^{l_t}{p_k}} \\ \notag
+      \text{subject to: 9}
+    \end{align}
+    \end{subequations}
 
 
     % \begin{equation}
