@@ -1,13 +1,13 @@
 # Fdb version 3
-["bibtex 1"] 1549361659 "1.aux" "1.bbl" "1" 1549364415
+["bibtex 1"] 1550934370 "1.aux" "1.bbl" "1" 1550937524
   "/usr/share/texlive/texmf-dist/bibtex/bst/IEEEtran/IEEEtran.bst" 1440712899 57748 7c8250ecf02814ce6ddc0cdbb63df1dd ""
-  "1.aux" 1549364414 338 8209cc4c24df448e69bbdec4083d65d7 ""
+  "1.aux" 1550934722 461 48ec25bd3c8d7cf7dafb9841304b58b6 ""
   "1.bcf" 0 -1 0 ""
   "references.bib" 1547641077 235 bf2d0e964b2ac1e122c18ac4e3f79b5e ""
   (generated)
   "1.bbl"
   "1.blg"
-["pdflatex"] 1549364414 "1.tex" "1.pdf" "1" 1549364415
+["pdflatex"] 1550934722 "1.tex" "1.pdf" "1" 1550937524
   "/etc/texmf/web2c/texmf.cnf" 1547635195 1101 af7716885e081ab43982cab7b4672c1a ""
   "/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc" 1165713224 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1272929888 3287 e6b82fe08f5336d4d5ebc73fb1152e87 ""
@@ -42,7 +42,6 @@
   "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb" 1248133631 35752 024fb6c41858982481f6968b5fc26508 ""
   "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb" 1248133631 32762 224316ccc9ad3ca0423a14971cfa7fc1 ""
   "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb" 1248133631 32569 5e5ddc8df908dea60932f3c484a54c0d ""
-  "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb" 1248133631 32716 08e384dc442464e7285e891af9f45947 ""
   "/usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb" 1136849748 44729 811d6c62865936705a31c797a1d5dada ""
   "/usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb" 1136849748 44656 0cbca70e0534538582128f6b54593cca ""
   "/usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb" 1136849748 46026 6dab18b61c907687b520c72847215a68 ""
@@ -92,12 +91,12 @@
   "/usr/share/texmf/web2c/texmf.cnf" 1503343927 31343 93828589fb0cea665e553ee5a17ad2d4 ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1547635239 1863403 f3ff9a4253bcb5fb9a9baaf0c572cb01 ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1547635254 3859088 3aeb1b58e8c29987290c861b3459ee46 ""
-  "1.aux" 1549364414 338 8209cc4c24df448e69bbdec4083d65d7 ""
-  "1.bbl" 1549361659 877 628a2a8c68e066122d1514411e0b8455 "bibtex 1"
-  "1.tex" 1549364413 6548 5b7f26b9ef30d2d5ab3fbdfdfc43ea19 ""
+  "1.aux" 1550934722 461 48ec25bd3c8d7cf7dafb9841304b58b6 ""
+  "1.bbl" 1550934370 877 628a2a8c68e066122d1514411e0b8455 "bibtex 1"
+  "1.tex" 1550937524 8906 49da3046d2fe81ad67152bc32f5e56d2 ""
   (generated)
-  "/home/mcslab/Downloads/Thesis/Latex/1.log"
   "/home/mcslab/Downloads/Thesis/Latex/1.pdf"
-  "1.aux"
+  "/home/mcslab/Downloads/Thesis/Latex/1.log"
   "1.pdf"
+  "1.aux"
   "1.log"

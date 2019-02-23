@@ -48,6 +48,8 @@
     % Let $p_i$ be the price that should be paid to IaaS provider $i$ for unit of processing power and $F_s$ be the processing power required for each sensor sample of user $s$.
     % Then $p_i r_{i,s} F_s$ is price paid to IaaS provider $i$ by user of service $s$ and total cost for user of service $s$ is $\sum_{i=1}^{N_I}{p_i r_{i,s} F_s}$.
     % We define utility function for user of service $s$ as the difference between quality of experience indicator and his total cost:
+    \subsection{Graph Model}
+
     $V^c$ is set of cloud nodes.
     $V^f$ is set of fog nodes.
     $V^e$ is set of edge nodes.
@@ -55,15 +57,15 @@
     \begin{subequations}
       \begin{align}
           V^c = \{v_1^c, v_2^c, ..., v_{l_c}^c\} => |V^c| = l_c\\
-          V^f = \{v_1^f, v_2^f, ..., v_{l_f}^f\}=> |V^f| = l_f\\
-          V^e = \{v_1^e, v_2^e, ..., v_{l_e}^e\}=> |V^e| = l_e\\
-          V^s = \{v_1^s, v_2^s, ..., v_{l_s}^s\}=> |V^s| = l_s
+          V^f = \{v_1^f, v_2^f, ..., v_{l_f}^f\} => |V^f| = l_f\\
+          V^e = \{v_1^e, v_2^e, ..., v_{l_e}^e\} => |V^e| = l_e\\
+          V^s = \{v_1^s, v_2^s, ..., v_{l_s}^s\} => |V^s| = l_s
       \end{align}
     \end{subequations}
+
     $C^c$ is set of capacity of cloud nodes.
     $C^f$ is set of capacity of fog nodes.
     $C^e$ is set of capacity of edge nodes.
-
     \begin{subequations}
       \begin{align}
           C^c = \{c_1^c, c_2^c, ..., c_{l_c}^c\}\\
@@ -78,78 +80,161 @@
           T = \{t_1, t_2, ..., t_{l_t}\} => |T| = l_t\\
       \end{align}
     \end{subequations}
-
-
-
-
-
-
-
+    Each task expresses as follows:
     \begin{equation}
-      P_i(u_i) = P_i^{idle} + (P_i^{max} - P_i^{idle}) u_i
+      t_k \in T => t_k = (w_k, \delta_k, o_k)
     \end{equation}
-    So each IaaS provider try to solve following optimizaiton problem:
+    $w_k$ shows computation workload of task.
+    $\delta_k$ is completion deadline of task and
+    $o_k$ determines the owner of task.\\
+
+
+    Price unit sets are defined as following:
     \begin{subequations}
       \begin{align}
-        &\max_{p_i, U_i,\Lambda^i_S} \varphi_i(p_i, U_i, \Lambda^i_S)\\
-        &\text{subject to:} \nonumber\\
-        &0 \le u_s^i, \forall s \in \{1, \hdots, N_S\} \\
-        &\sum_{s=1}^{N_S}u_s^i \le 1 \\
-        &P_{idle}^i + (P_{max}^i - P_{idle}^i)\sum_{s=1}^{N_S}u_s^i \le \bar{P^i} \\
-        &\Lambda_s^i \in SOL(F_s), \forall s
+        P^c = \{p_1^c, p_2^c, ..., p_{l_c}^c\}\\
+        P^f = \{p_1^f, p_2^f, ..., p_{l_f}^f\}\\
+        P^e = \{p_1^e, p_2^e, ..., p_{l_e}^e\}
       \end{align}
     \end{subequations}
+    $P^c$, $P^f$ and $P^e$ are unit price set of using cloud nodes,
+    fog nodes and edge nodes respectively.
+
+    Transmition delay sets that show required time for trasmiting packets
+    from sensors to each computational node are defined as follows:
+    \begin{subequations}
+      \begin{align}
+        T^{c,tr} = \{\tau_1^{c,tr}, \tau_2^{c,tr}, ..., \tau_{l_c}^{c,tr}\}\\
+        T^{f,tr} = \{\tau_1^{f,tr}, \tau_2^{f,tr}, ..., \tau_{l_f}^{f,tr}\}\\
+        T^{e,tr} = \{\tau_1^{e,tr}, \tau_2^{e,tr}, ..., \tau_{l_e}^{e,tr}\}
+      \end{align}
+    \end{subequations}
+
+    We define execution rate for each computational node as follows:
+    \begin{subequations}
+      \begin{align}
+        R^c = \{r_1^c, r_2^c, ..., r_{l_c}^c\}\\
+        R^f = \{r_1^f, r_2^f, ..., r_{l_f}^f\}\\
+        R^e = \{r_1^e, r_2^e, ..., r_{l_e}^e\}
+      \end{align}
+    \end{subequations}
+
+    \subsection{Variables}
+
+    We define three integer variables for allocating tasks between nodes.
+    \begin{subequations}
+      \begin{align}
+      x_{k,h}^c =
+      \begin{cases}
+        1 & \text{task $k$ is allocated to cloud node $h$} \\
+        0 & \text{o.w.}
+     \end{cases}
+     \end{align}
+
+     \begin{align}
+       x_{k,j}^f =
+       \begin{cases}
+         1 & \text{task $k$ is allocated to fog node $j$} \\
+         0 & \text{o.w.}
+      \end{cases}
+     \end{align}
+
+     \begin{align}
+       x_{k,i}^e =
+       \begin{cases}
+         1 & \text{task $k$ is allocated to edge node $i$} \\
+         0 & \text{o.w.}
+      \end{cases}
+     \end{align}
+
+     \begin{align}
+       \tau_k = \sum_{i=1}^{l_e}u_s^i \\
+     \end{align}
+    \end{subequations}
+
+
+
+
+    % \begin{equation}
+    %   P_i(u_i) = P_i^{idle} + (P_i^{max} - P_i^{idle}) u_i
+    % \end{equation}
+    % So each IaaS provider try to solve following optimizaiton problem:
+    % \begin{subequations}
+    %   \begin{align}
+    %     &\max_{p_i, U_i,\Lambda^i_S} \varphi_i(p_i, U_i, \Lambda^i_S)\\
+    %     &\text{subject to:} \nonumber\\
+    %     &0 \le u_s^i, \forall s \in \{1, \hdots, N_S\} \\
+    %     &\sum_{s=1}^{N_S}u_s^i \le 1 \\
+    %     &P_{idle}^i + (P_{max}^i - P_{idle}^i)\sum_{s=1}^{N_S}u_s^i \le \bar{P^i} \\
+    %     &\Lambda_s^i \in SOL(F_s), \forall s
+    %   \end{align}
+    % \end{subequations}
+
+
+
+
     % We can define an exact potential function for this game.
     % As explained in ** function $\pi$ is an exact potential function if for --- we have:
-    \begin{equation}
-      \pi(x^i,x^{-i}) - \pi(y^i,x^{-i}) = \varphi_i(x^i,x^{-i}) - \varphi_i(y^i,x^{-i})
-    \end{equation}
-    It's easy to show that any global minimum of function $\pi$ is a nash equilibrium of corresponding game.
 
-    show or not???
-    For IaaS providers exact potential function can be writen as:
-    \begin{equation}
-      \pi(x^i, x^{-i}) = \sum_{i=1}^{N_I} \varphi_i(x^i, x^{-i})
-    \end{equation}
-  \section{Problem Formulation}
-    \begin{subequations}
-      \begin{align}
-        &\max_{p^i, U^i,\Lambda^i_S, \sigma_S^i, \gamma_S^i, \nu_S^i,, \eta_S^i} \varphi(p_i, U^i,\Lambda_S^i)\\
-        &\text{subject to:} \nonumber\\
-        &\sum_{s=1}^{N_S}u_s^i \le 1 \\
-        &0 \le u_s^i, \forall s \in \{1, \hdots, N_S\} \\
-        &P_{idle}^i + (P_{max}^i - P_{idle}^i)\sum_{s=1}^{N_S}u_s^i \le \bar{P^i} \\
-        &0 \le \lambda_{s,i}^i \\
-        &\lambda_s^{min} - \sum_{j=1}^{N_{I}} \lambda_{j,s}^i \le 0, \forall s \in \{1, \hdots, N_S\} \\
-        &\lambda_{j,s}^i R_s \le 0.9 \mu_{j,s} C_j, \forall s \& j  \\
-        \begin{split}
-          \sum_{j=1}^{N_I} \lambda_{j,s}^i  (t^{sensors}_{j,s} + \frac{1}{\mu_{j,s}^i - \lambda_{j,s}^i} + t_{j,s}^{actuators} - t_s^{\text{max}}) \\
-          \le 0, \forall s
-        \end{split} \\
-        &\sigma_{j,s}^i \lambda_{j,s}^i = 0, \forall j \& s\\
-        &\gamma_s^i (\lambda_s^{min} - \sum_{j=1}^{N_{I}} \lambda_{j,s}^i) = 0, \forall s\\
-        &\nu_{j,s}^i (\lambda_{j,s} R_s - 0.9 \mu_{j,s} C_j) = 0 \forall j \& s\\
-        \begin{split}
-          \eta_s^i \sum_{j=1}^{N_I} \lambda_{j,s}^i  (t^{sensors}_{j,s} + \frac{1}{\mu_{j,s} C_j - \lambda_{j,s} R_s} + t_{j,s}^{actuators} - t_s^{\text{max}}) \\
-          = 0, \forall s
-        \end{split} \\
-        \begin{split}
-          &\frac{1}{\sum_{k=1}^{N_I} \lambda_{k,s}^i} - p_j R_s + \\
-          &\sigma_{j,s}^i + \gamma_s^i - R_s \nu_{j,s}^i - \\
-          &\eta_s^i (t_{j,s}^{sensors} + t_{j,s}^{actuators} - t_s^{max} + \frac{\mu_{j,s} C_j}{\mu_{j,s} C_j - \lambda_{j,s}^i R_s}) \\
-          & = 0, \forall s \& j
-        \end{split} \\
-        &0 \le \sigma_{j,s}^i, \sigma_{j,s}^i, \nu_{j,s}^i \& \sigma_{j,s}^i, \forall s \& j
-      \end{align}
-    \end{subequations}
-    Here $\lambda_{s,i}$ is $[\lambda^i_1, \cdots, \lambda^i_{N_S}]$ and $\lambda^i_s$ is conjecture of $\lambda_s$ by PaaS provider $i$, $u^i$ is $[u_{i,1}, \cdots, u_{i,N_S}]$ and $u_i = \sum_{i=1}^{N_S}u_{i,s}$.
-    A potential function can be defined for this game.
 
-    Function $\pi$ is potential function of this game:
-    \begin{equation}
-      \pi(x^i, y^i,x^{-i}, y^{-i})=\sum_{i=1}^{N_I} P(u_i) - p_i u_i
-    \end{equation}
-    here $x^i$ and $y^i$ are a tuple of $(p^i,u^i)$ and  $(\lambda_{s,i},\nu_S^i,\gamma_S^i)$
+
+
+  %
+  %   \begin{equation}
+  %     \pi(x^i,x^{-i}) - \pi(y^i,x^{-i}) = \varphi_i(x^i,x^{-i}) - \varphi_i(y^i,x^{-i})
+  %   \end{equation}
+  %   It's easy to show that any global minimum of function $\pi$ is a nash equilibrium of corresponding game.
+  %
+  %   show or not???
+  %   For IaaS providers exact potential function can be writen as:
+  %   \begin{equation}
+  %     \pi(x^i, x^{-i}) = \sum_{i=1}^{N_I} \varphi_i(x^i, x^{-i})
+  %   \end{equation}
+  % \section{Problem Formulation}
+  %   \begin{subequations}
+  %     \begin{align}
+  %       &\max_{p^i, U^i,\Lambda^i_S, \sigma_S^i, \gamma_S^i, \nu_S^i,, \eta_S^i} \varphi(p_i, U^i,\Lambda_S^i)\\
+  %       &\text{subject to:} \nonumber\\
+  %       &\sum_{s=1}^{N_S}u_s^i \le 1 \\
+  %       &0 \le u_s^i, \forall s \in \{1, \hdots, N_S\} \\
+  %       &P_{idle}^i + (P_{max}^i - P_{idle}^i)\sum_{s=1}^{N_S}u_s^i \le \bar{P^i} \\
+  %       &0 \le \lambda_{s,i}^i \\
+  %       &\lambda_s^{min} - \sum_{j=1}^{N_{I}} \lambda_{j,s}^i \le 0, \forall s \in \{1, \hdots, N_S\} \\
+  %       &\lambda_{j,s}^i R_s \le 0.9 \mu_{j,s} C_j, \forall s \& j  \\
+  %       \begin{split}
+  %         \sum_{j=1}^{N_I} \lambda_{j,s}^i  (t^{sensors}_{j,s} + \frac{1}{\mu_{j,s}^i - \lambda_{j,s}^i} + t_{j,s}^{actuators} - t_s^{\text{max}}) \\
+  %         \le 0, \forall s
+  %       \end{split} \\
+  %       &\sigma_{j,s}^i \lambda_{j,s}^i = 0, \forall j \& s\\
+  %       &\gamma_s^i (\lambda_s^{min} - \sum_{j=1}^{N_{I}} \lambda_{j,s}^i) = 0, \forall s\\
+  %       &\nu_{j,s}^i (\lambda_{j,s} R_s - 0.9 \mu_{j,s} C_j) = 0 \forall j \& s\\
+  %       \begin{split}
+  %         \eta_s^i \sum_{j=1}^{N_I} \lambda_{j,s}^i  (t^{sensors}_{j,s} + \frac{1}{\mu_{j,s} C_j - \lambda_{j,s} R_s} + t_{j,s}^{actuators} - t_s^{\text{max}}) \\
+  %         = 0, \forall s
+  %       \end{split} \\
+  %       \begin{split}
+  %         &\frac{1}{\sum_{k=1}^{N_I} \lambda_{k,s}^i} - p_j R_s + \\
+  %         &\sigma_{j,s}^i + \gamma_s^i - R_s \nu_{j,s}^i - \\
+  %         &\eta_s^i (t_{j,s}^{sensors} + t_{j,s}^{actuators} - t_s^{max} + \frac{\mu_{j,s} C_j}{\mu_{j,s} C_j - \lambda_{j,s}^i R_s}) \\
+  %         & = 0, \forall s \& j
+  %       \end{split} \\
+  %       &0 \le \sigma_{j,s}^i, \sigma_{j,s}^i, \nu_{j,s}^i \& \sigma_{j,s}^i, \forall s \& j
+  %     \end{align}
+  %   \end{subequations}
+  %   Here $\lambda_{s,i}$ is $[\lambda^i_1, \cdots, \lambda^i_{N_S}]$ and $\lambda^i_s$ is conjecture of $\lambda_s$ by PaaS provider $i$, $u^i$ is $[u_{i,1}, \cdots, u_{i,N_S}]$ and $u_i = \sum_{i=1}^{N_S}u_{i,s}$.
+  %   A potential function can be defined for this game.
+  %
+  %   Function $\pi$ is potential function of this game:
+  %   \begin{equation}
+  %     \pi(x^i, y^i,x^{-i}, y^{-i})=\sum_{i=1}^{N_I} P(u_i) - p_i u_i
+  %   \end{equation}
+  %   here $x^i$ and $y^i$ are a tuple of $(p^i,u^i)$ and  $(\lambda_{s,i},\nu_S^i,\gamma_S^i)$
+
+
+
+
+
+
 
     \bibliographystyle{IEEEtran}
     \bibliography{references}
