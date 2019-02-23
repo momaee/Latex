@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2019.1.16)  23 FEB 2019 18:42
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2019.2.6)  23 FEB 2019 23:45
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -446,8 +446,8 @@ Before submitting the final camera ready copy, remember to:
 ] (./1.aux) ) 
 Here is how much of TeX's memory you used:
  3927 strings out of 493029
- 58410 string characters out of 6136234
- 129565 words of memory out of 5000000
+ 58410 string characters out of 6136235
+ 129566 words of memory out of 5000000
  7409 multiletter control sequences out of 15000+600000
  40038 words of font info for 87 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
