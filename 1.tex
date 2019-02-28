@@ -190,6 +190,47 @@
     \end{subequations}
 
 
+    \subsection{Solution}
+    We can reshape main problem as following:
+    \begin{subequations}
+      \begin{align}
+        \min{\sum_{i=1}^{l_e} \sum_{k=1}^{l_t} x_{k,i}^e C_{k,i}^e
+          +\sum_{j=1}^{l_f} \sum_{k=1}^{l_t} x_{k,j}^f C_{k,j}^f
+          +\sum_{h=1}^{l_c} \sum_{k=1}^{l_t} x_{k,h}^c C_{k,h}^c} \\ \notag
+        \text{subject to:} \\ \notag
+          %
+          \sum_{i=1}^{l_e}x_{k,i}^e\tau_{k,i}^e
+          +\sum_{j=1}^{l_f}x_{k,j}^f\tau_{k,j}^f
+          +\sum_{h=1}^{l_c}x_{k,h}^c\tau_{k,h}^c
+          \le \delta_k \quad\quad \forall k\in\{1,2,...,l_t\} \\ \notag
+          %
+          \sum_{k=1}^{l_t}x_{k,h}^c w_k \le c_h^c \quad\quad \forall h\in\{1,2,...,l_c\} \\ \notag
+          %
+          \sum_{k=1}^{l_t}x_{k,j}^f w_k \le c_j^f \quad\quad \forall j\in\{1,2,...,l_f\} \\ \notag
+          %
+          \sum_{k=1}^{l_t}x_{k,i}^e w_k \le c_i^e \quad\quad \forall i\in\{1,2,...,l_e\} \\ \notag
+          %
+          \sum_{i=1}^{l_e}x_{k,i}^e+\sum_{j=1}^{l_f}x_{k,j}^f+\sum_{h=1}^{l_c}x_{k,h}^c=1 \quad\quad
+          \forall k\in\{1,2,...,l_t\} \\ \notag
+      \end{align}
+    \end{subequations}
+
+    We define $u^m$ for each computational agent $m$, that is a matrix with size $l_t*(l_e+l_f+l_c)$.
+    It is the local copy of all variables in agent $m$. i.e. $u_{k,i}^{e,m}$ is the copy of variable $x_{k,i}^e$
+    in agent $m$ for $m=1,..,(l_m = l_e+l_f+l_c)$. So we should add new constraint $u^m = z \quad \forall m$ to main problem.
+    We will use admm on this new constraint so:
+
+    \begin{subequations}
+      \begin{align}
+        L_p = \sum_{i=1}^{l_e} \sum_{k=1}^{l_t} x_{k,i}^e C_{k,i}^e
+        +\sum_{j=1}^{l_f} \sum_{k=1}^{l_t} x_{k,j}^f C_{k,j}^f
+        +\sum_{h=1}^{l_c} \sum_{k=1}^{l_t} x_{k,h}^c C_{k,h}^c \\ \notag
+        +\sum_{m=1}^{l_m} \nu^m*(u^m-z) + \sum_{m=1}^{l_m} \norm\frac{\rho}{2} ({u^m-z})^2
+      \end{align}
+    \end{subequations}
+
+
+
     % \begin{equation}
     %   P_i(u_i) = P_i^{idle} + (P_i^{max} - P_i^{idle}) u_i
     % \end{equation}
