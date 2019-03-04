@@ -190,29 +190,28 @@
     \end{align}
     \end{subequations}
 
-
     \subsection{Solution}
     We can reshape main problem as following:
     \begin{subequations}
       \begin{align}
-        \min{\sum_{i=1}^{l_e} \sum_{k=1}^{l_t} x_{k,i}^e C_{k,i}^e \\ \notag
-          +\sum_{j=1}^{l_f} \sum_{k=1}^{l_t} x_{k,j}^f C_{k,j}^f
-          +\sum_{h=1}^{l_c} \sum_{k=1}^{l_t} x_{k,h}^c C_{k,h}^c} \\ \notag
-        \text{subject to:} \\ \notag
+        &\min(\sum_{i=1}^{l_e} \sum_{k=1}^{l_t} x_{k,i}^e C_{k,i}^e \\ \notag
+        &+\sum_{j=1}^{l_f} \sum_{k=1}^{l_t} x_{k,j}^f C_{k,j}^f
+        +\sum_{h=1}^{l_c} \sum_{k=1}^{l_t} x_{k,h}^c C_{k,h}^c) \\ \notag
+        &\text{subject to:} \\ \notag
           %
-          \sum_{i=1}^{l_e}x_{k,i}^e\tau_{k,i}^e
-          +\sum_{j=1}^{l_f}x_{k,j}^f\tau_{k,j}^f
-          +\sum_{h=1}^{l_c}x_{k,h}^c\tau_{k,h}^c
-          \le \delta_k \quad\quad \forall k\in\{1,2,...,l_t\} \\ \notag
+        &\sum_{i=1}^{l_e}x_{k,i}^e\tau_{k,i}^e
+        +\sum_{j=1}^{l_f}x_{k,j}^f\tau_{k,j}^f
+        +\sum_{h=1}^{l_c}x_{k,h}^c\tau_{k,h}^c
+        \le \delta_k \quad \forall k\in\{1,...,l_t\} \\ \notag
           %
-          \sum_{k=1}^{l_t}x_{k,h}^c w_k \le c_h^c \quad\quad \forall h\in\{1,2,...,l_c\} \\ \notag
+        &\sum_{k=1}^{l_t}x_{k,h}^c w_k \le c_h^c \quad\quad \forall h\in\{1,2,...,l_c\} \\ \notag
           %
-          \sum_{k=1}^{l_t}x_{k,j}^f w_k \le c_j^f \quad\quad \forall j\in\{1,2,...,l_f\} \\ \notag
+        &\sum_{k=1}^{l_t}x_{k,j}^f w_k \le c_j^f \quad\quad \forall j\in\{1,2,...,l_f\} \\ \notag
           %
-          \sum_{k=1}^{l_t}x_{k,i}^e w_k \le c_i^e \quad\quad \forall i\in\{1,2,...,l_e\} \\ \notag
+        &\sum_{k=1}^{l_t}x_{k,i}^e w_k \le c_i^e \quad\quad \forall i\in\{1,2,...,l_e\} \\ \notag
           %
-          \sum_{i=1}^{l_e}x_{k,i}^e+\sum_{j=1}^{l_f}x_{k,j}^f+\sum_{h=1}^{l_c}x_{k,h}^c=1 \quad\quad
-          \forall k\in\{1,2,...,l_t\} \\ \notag
+        &\sum_{i=1}^{l_e}x_{k,i}^e+\sum_{j=1}^{l_f}x_{k,j}^f+\sum_{h=1}^{l_c}x_{k,h}^c=1 \quad\quad
+        \forall k\in\{1,2,...,l_t\} \\ \notag
       \end{align}
     \end{subequations}
 
@@ -223,41 +222,38 @@
 
     \begin{subequations}
       \begin{align}
-        L_p = \sum_{i=1}^{l_e} \sum_{k=1}^{l_t} x_{k,i}^e C_{k,i}^e
+        &L_p = \sum_{i=1}^{l_e} \sum_{k=1}^{l_t} x_{k,i}^e C_{k,i}^e
         +\sum_{j=1}^{l_f} \sum_{k=1}^{l_t} x_{k,j}^f C_{k,j}^f
         +\sum_{h=1}^{l_c} \sum_{k=1}^{l_t} x_{k,h}^c C_{k,h}^c \\ \notag
-        +\sum_{m=1}^{l_m} \nu^m*(u^m-z) + \sum_{m=1}^{l_m} \norm\frac{\rho}{2} \|u^m-z\|^2
+        &+\sum_{m=1}^{l_m} \nu^m*(u^m-z) + \sum_{m=1}^{l_m} \norm\frac{\rho}{2} \|u^m-z\|^2
       \end{align}
     \end{subequations}
 
     We can seperate augmented lagrangian for each computational agent $m$ then:
     \begin{subequations}
       \begin{align}
-        L_p^m = \sum_{k=1}^{l_t} u_{k,m}^{m} C_{k,m}
+        &L_p^m = \sum_{k=1}^{l_t} u_{k,m}^{m} C_{k,m}
         + \nu^m*(u^m-z) + \norm\frac{\rho}{2} \|u^m-z\|^2 \\ \notag
-        \quad \forall m\in\{1,2,...,l_m\}
+        &\quad \forall m\in\{1,2,...,l_m\}
       \end{align}
     \end{subequations}
 
     So we can write the algorithm as following:
     \begin{subequations}
       \begin{align}
-        \text{for each iteration k} \\ \notag
-        \text{1.\quad}
-        u^{m,(k+1)} = arg \min {L_p^m(u^{m}, z^{(k)}, \nu^{m,(k)})} = \\ \notag
-        \sum_{k=1}^{l_t} u_{k,m}^{m} C_{k,m}
+        &\text{for each iteration k} \\ \notag
+        &\text{1.\quad}u^{m,(k+1)} = arg \min {L_p^m(u^{m}, z^{(k)}, \nu^{m,(k)})} = \\ \notag
+        &\sum_{k=1}^{l_t} u_{k,m}^{m} C_{k,m}
         + \nu^{m,(k)}*(u^m-z^{(k)}) + \norm\frac{\rho}{2} \|u^m-z^{(k)}\|^2 \\ \notag
-        \text{subject to:} \\ \notag
-        \sum_{k=1}^{l_t}{u_{k,m}^m w_k} \le c^m \\ \notag
-        \sum_{i=1}^{l_e}u_{k,i}^{e,m}+\sum_{j=1}^{l_f}u_{k,j}^{f,m}+\sum_{h=1}^{l_c}u_{k,h}^{c,m}=1 \quad\quad \forall k\in\{1,2,...,l_t\} \\ \notag
-        \sum_{i=1}^{l_e}u_{k,i}^{e,m}\tau_{k,i}^e
+        &\text{subject to:} \\ \notag
+        &\sum_{k=1}^{l_t}{u_{k,m}^m w_k} \le c^m \\ \notag
+        &\sum_{i=1}^{l_e}u_{k,i}^{e,m}+\sum_{j=1}^{l_f}u_{k,j}^{f,m}+\sum_{h=1}^{l_c}u_{k,h}^{c,m}=1 \quad\quad \forall k\in\{1,2,...,l_t\} \\ \notag
+        &\sum_{i=1}^{l_e}u_{k,i}^{e,m}\tau_{k,i}^e
         +\sum_{j=1}^{l_f}u_{k,j}^{f,m}\tau_{k,j}^f
         +\sum_{h=1}^{l_c}u_{k,h}^{c,m}\tau_{k,h}^c
         \le \delta_k \quad\quad \forall k\in\{1,2,...,l_t\} \\ \notag
-        \text{2.\quad}
-        {z}^{(k+1)} = \bar{u}^{(k+1)} + \frac{1}{\rho}\bar{\nu}^{(k)} \\ \notag
-        \text{3.\quad}
-        {\nu}^{m,(k+1)} = \nu^{m,(k)} + \rho(u^{m,(k+1)} - z^{(k+1)})
+        &\text{2.\quad}{z}^{(k+1)} = \bar{u}^{(k+1)} + \frac{1}{\rho}\bar{\nu}^{(k)} \\ \notag
+        &\text{3.\quad}{\nu}^{m,(k+1)} = \nu^{m,(k)} + \rho(u^{m,(k+1)} - z^{(k+1)})
       \end{align}
     \end{subequations}
 
