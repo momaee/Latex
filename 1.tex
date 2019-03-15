@@ -266,6 +266,51 @@
     \end{algorithm}
 
 
+    \subsection{Solution 2}
+    lagrangian of main problem is as following
+    \begin{subequations}
+      \begin{align}
+        &L(x^e,x^f,x^c,\lambda,\nu) = \sum_{i=1}^{l_e} \sum_{k=1}^{l_t} x_{k,i}^e C_{k,i}^e
+        +\sum_{j=1}^{l_f} \sum_{k=1}^{l_t} x_{k,j}^f C_{k,j}^f
+        +\sum_{h=1}^{l_c} \sum_{k=1}^{l_t} x_{k,h}^c C_{k,h}^c \\ \notag
+        %
+        &+\sum_{k=1}^{l_t}\lambda_k(\sum_{i=1}^{l_e}x_{k,i}^e\tau_{k,i}^e
+        +\sum_{j=1}^{l_f}x_{k,j}^f\tau_{k,j}^f
+        +\sum_{h=1}^{l_c}x_{k,h}^c\tau_{k,h}^c
+        -\delta_k) \\ \notag
+        %
+        &+\sum_{k=1}^{l_t}\nu_k(\sum_{i=1}^{l_e}x_{k,i}^e+\sum_{j=1}^{l_f}x_{k,j}^f+\sum_{h=1}^{l_c}x_{k,h}^c-1)
+      \end{align}
+    \end{subequations}
+    So we can decompose the lagrangian as follows
+    \begin{subequations}
+      \begin{align}
+        &L(x^e,x^f,x^c,\lambda,\nu) = \sum_{i=1}^{l_e} \sum_{k=1}^{l_t} (x_{k,i}^e C_{k,i}^e +\lambda_kx_{k,i}^e\tau_{k,i}^e +\nu_kx_{k,i}^e - \frac{\lambda_k\delta_k +\nu_k}{3l_e} ) \\ \notag
+        &+\sum_{j=1}^{l_f} \sum_{k=1}^{l_t} (x_{k,j}^f C_{k,j}^f +\lambda_kx_{k,j}^f\tau_{k,j}^f +\nu_kx_{k,j}^f - \frac{\lambda_k\delta_k +\nu_k}{3l_f}) \\ \notag
+        &+\sum_{h=1}^{l_c} \sum_{k=1}^{l_t} (x_{k,h}^c C_{k,h}^c +\lambda_kx_{k,h}^c\tau_{k,h}^c +\nu_kx_{k,h}^c - \frac{\lambda_k\delta_k +\nu_k}{3l_c}) \\ \notag
+      \end{align}
+    \end{subequations}
+    \begin{subequations}
+      \begin{align}
+        &L(x^e,x^f,x^c,\lambda,\nu) = \sum_{i=1}^{l_e} L_{i}^e(x_{i}^e,\lambda,\nu) \\ \notag
+        &+\sum_{j=1}^{l_f} L_{j}^f(x_{j}^f,\lambda,\nu) \\ \notag
+        &+\sum_{h=1}^{l_c} L_{h}^c(x_{h}^c,\lambda,\nu) \\ \notag
+      \end{align}
+    \end{subequations}
+    \begin{subequations}
+      \begin{align}
+        &g(\lambda, \nu) = \inf_{x^e,x^f,x^c}L(x^e,x^f,x^c,\lambda,\nu) \\ \notag
+        &=\sum_{i=1}^{l_e}\inf_{x_i^e}L_{i}^e(x_{i}^e,\lambda,\nu) \\ \notag
+        &+\sum_{j=1}^{l_f}\inf_{x_j^f}L_{j}^f(x_{j}^f,\lambda,\nu) \\ \notag
+        &+\sum_{h=1}^{l_c}\inf_{x_h^c}L_{h}^c(x_{h}^c,\lambda,\nu) \\ \notag
+        &=\sum_{i=1}^{l_e}g_{i}^e(\lambda,\nu) \\ \notag
+        &+\sum_{j=1}^{l_f}g_{j}^f(\lambda,\nu) \\ \notag
+        &+\sum_{h=1}^{l_c}g_{h}^c(\lambda,\nu) \\ \notag
+      \end{align}
+    \end{subequations}
+
+
+
     % \begin{equation}
     %   P_i(u_i) = P_i^{idle} + (P_i^{max} - P_i^{idle}) u_i
     % \end{equation}

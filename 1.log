@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2019.2.6)  4 MAR 2019 11:45
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2019.1.16)  13 MAR 2019 12:54
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -521,7 +521,23 @@ l.264         \ENDWHILE
 Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
-(./1.bbl
+
+Overfull \hbox (62.3848pt too wide) in paragraph at lines 283--283
+[] 
+ []
+
+
+Underfull \vbox (badness 2512) has occurred while \output is active []
+
+ [2]
+Overfull \hbox (55.40285pt too wide) in paragraph at lines 291--291
+[] 
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ (./1.bbl
 
 ./1.bbl:24: LaTeX Error: Something's wrong--perhaps a missing \item.
 
@@ -546,11 +562,11 @@ Before submitting the final camera ready copy, remember to:
  uses only Type 1 fonts and that every step in the generation
  process uses the appropriate paper size.
 
-[2] (./1.aux) ) 
+[3] (./1.aux) ) 
 Here is how much of TeX's memory you used:
  4058 strings out of 493029
- 60028 string characters out of 6136235
- 134246 words of memory out of 5000000
+ 60028 string characters out of 6136234
+ 137245 words of memory out of 5000000
  7532 multiletter control sequences out of 15000+600000
  41145 words of font info for 88 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -566,10 +582,10 @@ lic/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times
 /utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></
 usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texli
 ve/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on 1.pdf (2 pages, 119597 bytes).
+Output written on 1.pdf (3 pages, 123578 bytes).
 PDF statistics:
- 56 PDF objects out of 1000 (max. 8388607)
- 40 compressed objects within 1 object stream
+ 59 PDF objects out of 1000 (max. 8388607)
+ 42 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 
