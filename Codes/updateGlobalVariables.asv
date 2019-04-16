@@ -1,0 +1,6 @@
+function y = updateGlobalVariables(lambda, x_e, x_f, x_c, delta_t, tau_e, tau_f, tau_c)
+y(i) = lambda(i) + alpha*(x_e'*tau_e + x_f'*tau_f + x_c'*tau_c(:,i) - delta_t(i))
+
+
+end
+
