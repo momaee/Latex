@@ -257,15 +257,6 @@
       \end{align}
     \end{subequations}
 
-    \begin{algorithm}
-      \caption{}
-      \begin{algorithmic}
-        \WHILE{not converged}
-        \ENDWHILE
-      \end{algorithmic}
-    \end{algorithm}
-
-
     \subsection{Solution 2}
     lagrangian of main problem is as following
     \begin{subequations}
@@ -285,7 +276,8 @@
     So we can decompose the lagrangian as follows
     \begin{subequations}
       \begin{align}
-        &L(x^e,x^f,x^c,\lambda,\nu) = \sum_{i=1}^{l_e} \sum_{k=1}^{l_t} (x_{k,i}^e C_{k,i}^e +\lambda_kx_{k,i}^e\tau_{k,i}^e +\nu_kx_{k,i}^e - \frac{\lambda_k\delta_k +\nu_k}{3l_e} ) \\ \notag
+        &L(x^e,x^f,x^c,\lambda,\nu) = \\ \notag
+        &\sum_{i=1}^{l_e} \sum_{k=1}^{l_t} (x_{k,i}^e C_{k,i}^e +\lambda_kx_{k,i}^e\tau_{k,i}^e +\nu_kx_{k,i}^e - \frac{\lambda_k\delta_k +\nu_k}{3l_e} ) \\ \notag
         &+\sum_{j=1}^{l_f} \sum_{k=1}^{l_t} (x_{k,j}^f C_{k,j}^f +\lambda_kx_{k,j}^f\tau_{k,j}^f +\nu_kx_{k,j}^f - \frac{\lambda_k\delta_k +\nu_k}{3l_f}) \\ \notag
         &+\sum_{h=1}^{l_c} \sum_{k=1}^{l_t} (x_{k,h}^c C_{k,h}^c +\lambda_kx_{k,h}^c\tau_{k,h}^c +\nu_kx_{k,h}^c - \frac{\lambda_k\delta_k +\nu_k}{3l_c}) \\ \notag
       \end{align}
@@ -309,6 +301,28 @@
       \end{align}
     \end{subequations}
 
+    \begin{subequations}
+      \begin{align}
+        &\lambda_k^+ = \lambda_k^- + \alpha(\sum_{i=1}^{l_e}x_{k,i}^e\tau_{k,i}^e
+        +\sum_{j=1}^{l_f}x_{k,j}^f\tau_{k,j}^f
+        +\sum_{h=1}^{l_c}x_{k,h}^c\tau_{k,h}^c
+        -\delta_k) \\ \notag
+      \end{align}
+      \begin{align}
+        &\nu_k^+ = \nu_k^- + \alpha(\sum_{i=1}^{l_e}x_{k,i}^e+\sum_{j=1}^{l_f}x_{k,j}^f+\sum_{h=1}^{l_c}x_{k,h}^c-1)
+      \end{align}
+    \end{subequations}
+
+    \begin{algorithm}
+      \caption{}
+      \begin{algorithmic}
+        \WHILE{not converged}
+        1. update $x^c, x^f, x^e$ using (19a) \newline
+        2. update lagrangian multipliers using (20a) and (21a) \newline
+        $\alpha = \frac{\alpha_0}{k}$ for each iteration $k$
+        \ENDWHILE
+      \end{algorithmic}
+    \end{algorithm}
 
 
     % \begin{equation}
