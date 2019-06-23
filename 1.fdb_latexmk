@@ -1,5 +1,5 @@
 # Fdb version 3
-["pdflatex"] 1561309067 "1.tex" "1.pdf" "1" 1561309166
+["pdflatex"] 1561309067 "1.tex" "1.pdf" "1" 1561309444
   "/etc/texmf/web2c/texmf.cnf" 1547635195 1101 af7716885e081ab43982cab7b4672c1a ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1272929888 3287 e6b82fe08f5336d4d5ebc73fb1152e87 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/adobe/times/ptmb7t.tfm" 1136768653 2172 fd0c924230362ff848a33632ed45dc23 ""
@@ -20,12 +20,12 @@
   "/usr/share/texmf/web2c/texmf.cnf" 1503343927 31343 93828589fb0cea665e553ee5a17ad2d4 ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1547635254 3859088 3aeb1b58e8c29987290c861b3459ee46 ""
   "1.aux" 1561309068 951 3260ad8862f647ac7c44174e72a782b4 ""
-  "1.tex" 1561309166 16641 17d78bae932e0eaa20500c5fc19e2f15 ""
+  "1.tex" 1561309412 16641 17d78bae932e0eaa20500c5fc19e2f15 ""
   (generated)
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map"
-  "/var/lib/texmf/web2c/pdftex/pdflatex.fmt"
-  "1.log"
-  "1.pdf"
   "1.tex"
   "1.bbl"
+  "1.log"
   "1.aux"
+  "1.pdf"
+  "/var/lib/texmf/web2c/pdftex/pdflatex.fmt"
