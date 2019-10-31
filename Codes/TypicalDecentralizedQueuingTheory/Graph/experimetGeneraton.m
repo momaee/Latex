@@ -1,0 +1,25 @@
+function [x,observationVec,measurementMat,LipshitzCons,strongConv,AA,BB,mf,Mf] = experimetGeneraton(numNode,numVariable,numObservation,noiseVariance)
+x = randn(numVariable,1);
+observationVec = zeros(numObservation,numNode);
+LipshitzCons = zeros(numNode,1);
+strongConv = zeros(numNode,1);
+measurementMat = randn(numObservation,numVariable,numNode);
+AA = zeros(numObservation*numNode,numVariable);
+BB = zeros(numObservation*numNode,1);
+for ii = 1:numNode    
+    [U,S,V] = svd(measurementMat(:,:,ii));
+%     sMAx = max(diag(S));
+%     sMin = min(diag(S));
+%     S1 = (sqrt(Mf)-sqrt(mf))/(sMAx - sMin )*(diag(S) - sMin) + sqrt(mf);
+%     S = diag(S1);
+    measurementMat(:,:,ii) = U*S*V';
+    s = svd(measurementMat(:,:,ii)'*measurementMat(:,:,ii));
+    LipshitzCons(ii) = max(s);
+    lambda = eig(measurementMat(:,:,ii)'*measurementMat(:,:,ii));
+    strongConv(ii) = min(lambda);
+    observationVec(:,ii) = measurementMat(:,:,ii)*x + sqrt(noiseVariance)*randn(numObservation,1);
+    AA((ii-1)*3 + 1 : 3*ii,:) = measurementMat(:,:,ii);
+    BB((ii-1)*3 + 1 : 3*ii,:) = observationVec(:,ii);
+end
+mf = min(strongConv);
+Mf = max(LipshitzCons);
