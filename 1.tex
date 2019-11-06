@@ -51,126 +51,266 @@
     % We define utility function for user of service $s$ as the difference between quality of experience indicator and his total cost:
     \subsection{Graph Model}
 
-    $V^c$ is set of cloud nodes.
-    $V^f$ is set of fog nodes.
-    $V^e$ is set of edge nodes.
-    $V^s$ is set of sensor nodes.
+    $C$ is set of cloud nodes.
+    $F$ is set of fog nodes.
+    $E$ is set of edge nodes.
+    $S$ is set of sensor nodes.
+    $R$ is set of resources in each computational node(cloud, fog or edge node).
     \begin{subequations}
       \begin{align}
-          V^c = \{v_1^c, v_2^c, ..., v_{l_c}^c\} => |V^c| = l_c\\
-          V^f = \{v_1^f, v_2^f, ..., v_{l_f}^f\} => |V^f| = l_f\\
-          V^e = \{v_1^e, v_2^e, ..., v_{l_e}^e\} => |V^e| = l_e\\
-          V^s = \{v_1^s, v_2^s, ..., v_{l_s}^s\} => |V^s| = l_s
+          C = \{v_1^c, v_2^c, ..., v_{|C|}^c\} , c \in C\\
+          F = \{v_1^f, v_2^f, ..., v_{|F|}^f\} , f \in F\\
+          E = \{v_1^e, v_2^e, ..., v_{|E|}^e\} , e \in E\\
+          S = \{v_1^s, v_2^s, ..., v_{|S|}^s\} , s \in S\\
+          R = \{CPU, RAM, Storage\} , r \in R
       \end{align}
     \end{subequations}
 
-    $C^c$ is set of capacity of cloud nodes.
-    $C^f$ is set of capacity of fog nodes.
-    $C^e$ is set of capacity of edge nodes.
-    \begin{subequations}
-      \begin{align}
-          C^c = \{c_1^c, c_2^c, ..., c_{l_c}^c\}\\
-          C^f = \{c_1^f, c_2^f, ..., c_{l_f}^f\}\\
-          C^e = \{c_1^e, c_2^e, ..., c_{l_e}^e\}
-      \end{align}
-    \end{subequations}
+    $\sigma_c^r$ is total capacity of resource $r \in R$ on node $c \in C$.
+    and also $\sigma_f^r$ and $\sigma_e^r$ are total capcity of resource $r \in R$
+    on nodes $f \in F$ and $e \in E$ respectively.
 
     $T$ is set of tasks.
     \begin{subequations}
       \begin{align}
-          T = \{t_1, t_2, ..., t_{l_t}\} => |T| = l_t\\
+          T = \{t_1, t_2, ..., t_{|T|}\}
       \end{align}
     \end{subequations}
     Each task expresses as follows:
     \begin{equation}
-      t_k \in T => t_k = (w_k, \delta_k, o_k)
+      t \in T => t = (w_t, \delta_t, N_t, f_t^r(\lambda_t))
     \end{equation}
-    $w_k$ shows computation workload of task.
-    $\delta_k$ is completion deadline of task and
-    $o_k$ determines the owner of task.\\
+    $w_t$ shows computation workload of the task.
+    $\delta_t$ is completion deadline of the task and
+    $N_t$ determines the maximum number of instaces of task $t \in T$.\\
 
+    $\pi_c$ is unit price of processing in node $c \in C$ and also $\pi_f$
+    and $\pi_e$ are the ralated prices in nodes $f \in F$ and $e \in E$ respectively.
 
-    Price unit sets are defined as following:
-    \begin{subequations}
-      \begin{align}
-        P^c = \{p_1^c, p_2^c, ..., p_{l_c}^c\}\\
-        P^f = \{p_1^f, p_2^f, ..., p_{l_f}^f\}\\
-        P^e = \{p_1^e, p_2^e, ..., p_{l_e}^e\}
-      \end{align}
-    \end{subequations}
-    $P^c$, $P^f$ and $P^e$ are unit price set of using cloud nodes,
-    fog nodes and edge nodes respectively.
-
-    Transmition delay sets that show required time for trasmiting packets
-    from sensors to each computational node are defined as follows:
-    \begin{subequations}
-      \begin{align}
-        T^{c,tr} = \{\tau_1^{c,tr}, \tau_2^{c,tr}, ..., \tau_{l_c}^{c,tr}\}\\
-        T^{f,tr} = \{\tau_1^{f,tr}, \tau_2^{f,tr}, ..., \tau_{l_f}^{f,tr}\}\\
-        T^{e,tr} = \{\tau_1^{e,tr}, \tau_2^{e,tr}, ..., \tau_{l_e}^{e,tr}\}
-      \end{align}
-    \end{subequations}
-
-    We define execution rate for each computational node as follows:
-    \begin{subequations}
-      \begin{align}
-        R^c = \{r_1^c, r_2^c, ..., r_{l_c}^c\}\\
-        R^f = \{r_1^f, r_2^f, ..., r_{l_f}^f\}\\
-        R^e = \{r_1^e, r_2^e, ..., r_{l_e}^e\}
-      \end{align}
-    \end{subequations}
+    Transmition delays that show required time for trasmiting packets
+    from sensors to each computational node are defined as follows:\\
+    $\tau_{s,c}^{tr}$ = trasmition delay between node $s \in S$ and $c \in C$\\
+    $\tau_{s,f}^{tr}$ = trasmition delay between node $s \in S$ and $f \in F$\\
+    $\tau_{s,e}^{tr}$ = trasmition delay between node $s \in S$ and $e \in E$
 
     \subsection{Variables}
 
     We define three integer variables for allocating tasks between nodes.
     \begin{subequations}
       \begin{align}
-      x_{k,h}^c =
-      \begin{cases}
-        1 & \text{task $k$ is allocated to cloud node $h$} \\
-        0 & \text{o.w.}
-     \end{cases}
-     \end{align}
+        x_{t,c} =
+        \begin{cases}
+          1 & \text{task $t \in T$ is allocated to node $c \in C$} \\
+          0 & \text{o.w.}
+        \end{cases}
+      \end{align}
+
+      \begin{align}
+        x_{t,f} =
+        \begin{cases}
+          1 & \text{task $t \in T$ is allocated to node $f \in F$} \\
+          0 & \text{o.w.}
+        \end{cases}
+      \end{align}
 
      \begin{align}
-       x_{k,j}^f =
+       x_{t,e} =
        \begin{cases}
-         1 & \text{task $k$ is allocated to fog node $j$} \\
+         1 & \text{task $t \in T$ is allocated to node $e \in E$} \\
          0 & \text{o.w.}
       \end{cases}
      \end{align}
-
+  \end{subequations}
+  there are two continouse variables:
+  \begin{subequations}
      \begin{align}
-       x_{k,i}^e =
-       \begin{cases}
-         1 & \text{task $k$ is allocated to edge node $i$} \\
-         0 & \text{o.w.}
-      \end{cases}
+        \lambda_{t,s} = \text{poisson rate of task $t \in T$ generated by node $s \in S$}
      \end{align}
 
      \begin{align}
-       \tau_k = \sum_{i=1}^{l_e}x_{k,i}^e(\tau_i^{e,tr}+\frac{w_k}{r_i^e}) \\ \notag
-       +\sum_{j=1}^{l_f}x_{k,j}^f(\tau_j^{f,tr}+\frac{w_k}{r_j^f}) \\ \notag
-       +\sum_{h=1}^{l_c}x_{k,h}^c(\tau_k^{c,tr}+\frac{w_k}{r_h^c})
+       0 \le \beta_{t,s,c} \le \lambda_{t,s}  \quad \forall{t \in T}, \forall{s \in S}, \forall{c \in C} \\
+       0 \le \beta_{t,s,f} \le \lambda_{t,s}  \quad \forall{t \in T}, \forall{s \in S}, \forall{f \in F} \\
+       0 \le \beta_{t,s,e} \le \lambda_{t,s}  \quad \forall{t \in T}, \forall{s \in S}, \forall{e \in E}
      \end{align}
-    \end{subequations}
+
+     \begin{align}
+       \beta_{t,s,c} = \text{size of flow of task $t \in T$ from node $s \in S$ to node $c \in C$}
+     \end{align}
+
+     \begin{align}
+        \gamma_{t,s,c} =
+        \begin{cases}
+          1 & \text{flow of task $t \in T$ from node $s \in S$ to node $c \in C$ exists.}
+          0 & \text{o.w.}
+        \end{cases}
+     \end{align}
+
+     \begin{align}
+        \gamma_{t,s,f} =
+        \begin{cases}
+          1 & \text{flow of task $t \in T$ from node $s \in S$ to node $f \in F$ exists.}
+          0 & \text{o.w.}
+        \end{cases}
+     \end{align}
+
+     \begin{align}
+        \gamma_{t,s,e} =
+        \begin{cases}
+          1 & \text{flow of task $t \in T$ from node $s \in S$ to node $e \in E$ exists.}
+          0 & \text{o.w.}
+        \end{cases}
+     \end{align}
+   \end{subequations}
 
     \subsection{Constraints}
     \begin{subequations}
       \begin{align}
-        \tau_k \le \delta_k \quad\quad \forall k\in\{1,2,...,l_t\}
+        \lambda_{t,c} = \sum_{s\in S}\beta_{t,s,c} \quad \forall{t \in T}, \forall{s \in S}, \forall{c \in C} \\
+        \lambda_{t,f} = \sum_{s\in S}\beta_{t,s,f} \quad \forall{t \in T}, \forall{s \in S}, \forall{f \in F} \\
+        \lambda_{t,e} = \sum_{s\in S}\beta_{t,s,e} \quad \forall{t \in T}, \forall{s \in S}, \forall{e \in E}
+      \end{align}
+    \end{subequations}
+
+    \begin{subequations}
+      \begin{align}
+        \gamma_{t,s,c} \le x_{t,c} \quad \forall{t \in T}, \forall{s \in S}, \forall{c \in C} \\
+        \gamma_{t,s,f} \le x_{t,f} \quad \forall{t \in T}, \forall{s \in S}, \forall{f \in F} \\
+        \gamma_{t,s,e} \le x_{t,e} \quad \forall{t \in T}, \forall{s \in S}, \forall{e \in E}
+      \end{align}
+    \end{subequations}
+
+    \begin{subequations}
+      \begin{align}
+          \gamma_{t,s,c}-1+\epsilon \le \beta_{t,s,c} \le \gamma_{t,s,c} \lambda_{t,s} \quad \forall{t \in T}, \forall{s \in S}, \forall{c \in C} \\
+          \gamma_{t,s,f}-1+\epsilon \le \beta_{t,s,f} \le \gamma_{t,s,f} \lambda_{t,s} \quad \forall{t \in T}, \forall{s \in S}, \forall{f \in F} \\
+          \gamma_{t,s,e}-1+\epsilon \le \beta_{t,s,e} \le \gamma_{t,s,e} \lambda_{t,s} \quad \forall{t \in T}, \forall{s \in S}, \forall{e \in E}
+      \end{align}
+    \end{subequations}
+
+    \begin{subequations}
+      \begin{align}
+        \lambda_{t,s} = \sum_{e \in E} \beta_{t,s,e} + \sum_{f \in F} \beta_{t,s,f}
+                        +\sum_{c \in C}\beta_{t,s,c} \quad \forall{t \in T}, \forall{s \in S}
+      \end{align}
+    \end{subequations}
+
+    \begin{subequations}
+      \begin{align}
+        &\sum_{t \in T}x_{t,c}f_t^r(\lambda_{t,c}) \le \sigma_c^r \quad \forall{r \in R}, \forall{c \in C} \\
+        &x_{t,c}f_t^r(\lambda_{t,c}) = k_1^rx_{t,c}\lambda_{t,c} + k_2^rx_{t,c} \\
+        &\psi_{t,c} \triangleq x_{t,c}\lambda_{t,c} \Rightarrow 0 \leq \psi_{t,c} \leq \lambda_{t,c} \\
+        &Q(x_{t,c}-1)+\lambda_{t,c} \leq \psi_{t,c} \leq x_{t,c}Q \\
+        &\notag Q = \max_{{t \ in T},{c \in C}} \lambda_{t,c} \\
+        &\notag =\max_{{t \ in T},{c \in C}} \sum_{s \in S}\beta_{t,s,c} \\
+        &\notag =\sum_{s\in S} \max_{{t \ in T},{c \in C}} \beta_{t,s,c} \\
+        &=\sum_{s \in S}\lambda_{t,s}
+      \end{align}
+    \end{subequations}
+
+    \begin{subequations}
+      \begin{align}
+      &0 \leq \psi_{t,c} \leq \lambda_{t,c} \\
+      &Q(x_{t,c}-1)+\lambda_{t,c} \leq \psi_{t,c} \leq x_{t,c}Q \quad \forall{t\in T}, \forall{c \in C} \\
+      &0 \leq \psi_{t,f} \leq \lambda_{t,f} \\
+      &Q(x_{t,f}-1)+\lambda_{t,f} \leq \psi_{t,f} \leq x_{t,f}Q \quad \forall{t \in T}, \forall{f \in F} \\
+      &0 \leq \psi_{t,e} \leq \lambda_{t,e} \\
+      &Q(x_{t,e}-1)+\lambda_{t,e} \leq \psi_{t,e} \leq x_{t,e}Q \quad \forall{t \in T}, \forall{e \in E}
+      \end{align}
+    \end{subequations}
+    \begin{subequations}
+      \begin{align}
+        \sum_{t \in T}k_1^r\psi_{t,c}+k_2^rx_{t,c} \le \sigma_c^r \quad \forall{r \in R}, \forall{c \in C} \\
+        \sum_{t \in T}k_1^r\psi_{t,f}+k_2^rx_{t,f} \le \sigma_f^r \quad \forall{r \in R}, \forall{f \in F} \\
+        \sum_{t \in T}k_1^r\psi_{t,e}+k_2^rx_{t,e} \le \sigma_e^r \quad \forall{r \in R}, \forall{e \in E}
+      \end{align}
+    \end{subequations}
+    \begin{subequations}
+      \begin{align}
+        &\tau_{t,c} = \tau_{t,s,c}^{tr} + \frac{1}{\mu_{t,c}-\lambda_{t,c}} \\
+        &\notag\text{We have:} \\
+        &\frac{1}{\mu_{t,c}} = \frac{w_t}{f_t^{cpu}(\lambda_{t,c})} \\
+        &f_t^{cpu}(\lambda_{t,c}) = k_1^{cpu}\lambda_{t,c}+k_2^{cpu} \\
+        &\notag\Rightarrow \gamma_{t,s,c} \tau_{t,c} = \gamma_{t,s,c} (\tau_{t,s,c}^{tr} + \frac{w_t}{(k_1^{cpu}-w_t)\lambda_{t,c} + k_2^{cpu}}) \\
+        &\le \delta_t \quad \forall{t \in T}, \forall{s \in S}, \forall{c \in C}
       \end{align}
       \begin{align}
-        \sum_{k=1}^{l_t}x_{k,h}^c w_k \le c_h^c \quad\quad \forall h\in\{1,2,...,l_c\}
+        &\notag\gamma_{t,s,c}\lambda_{t,c}(k_1^{cpu}-w_t)\tau^{tr}_{t,s,c} + \\ &\notag\gamma_{t,s,c}k_2^{cpu}\tau_{t,s,c}^{tr}+w_t\gamma_{t,s,c}-k_2^{cpu}\delta_t \\ &-(k_1^{cpu}-w_t)\delta_t\lambda_{t,c} \le 0 \quad \forall{t \in T}, \forall{s \in S}, \forall{c \in C}
       \end{align}
       \begin{align}
-        \sum_{k=1}^{l_t}x_{k,j}^f w_k \le c_j^f \quad\quad \forall j\in\{1,2,...,l_f\}
+        &\phi_{t,s,c} = \gamma_{t,s,c}\lambda_{t,c} \\
+        &0 \le \phi_{t,s,c} \le \lambda_{t,c} \\
+        &Q(\gamma_{t,s,c}-1)+\lambda_{t,c} \le \phi_{t,s,c} \le \gamma_{t,s,c}Q
+      \end{align}
+    \end{subequations}
+
+    \begin{subequations}
+      \begin{align}
+        &\notag\phi_{t,s,c}(k_1^{cpu}-w_t)\tau^{tr}_{t,s,c} + \\ &\notag\gamma_{t,s,c}k_2^{cpu}\tau_{t,s,c}^{tr}+w_t\gamma_{t,s,c}-k_2^{cpu}\delta_t \\ &-(k_1^{cpu}-w_t)\delta_t\lambda_{t,c} \le 0 \\
+        &0 \le \phi_{t,s,c} \le \lambda_{t,c} \\
+        &Q(\gamma_{t,s,c}-1)+\lambda_{t,c} \le \phi_{t,s,c} \le \gamma_{t,s,c}Q \quad \forall{t \in T}, \forall{s \in S}, \forall{c \in C}
       \end{align}
       \begin{align}
-        \sum_{k=1}^{l_t}x_{k,i}^e w_k \le c_i^e \quad\quad \forall i\in\{1,2,...,l_e\}
+        &\notag\phi_{t,s,f}(k_1^{cpu}-w_t)\tau^{tr}_{t,s,f} + \\ &\notag\gamma_{t,s,f}k_2^{cpu}\tau_{t,s,f}^{tr}+w_t\gamma_{t,s,f}-k_2^{cpu}\delta_t \\ &-(k_1^{cpu}-w_t)\delta_t\lambda_{t,f} \le 0 \\
+        &0 \le \phi_{t,s,f} \le \lambda_{t,c} \\
+        &Q(\gamma_{t,s,f}-1)+\lambda_{t,f} \le \phi_{t,s,f} \le \gamma_{t,s,f}Q \quad \forall{t \in T}, \forall{s \in S}, \forall{f \in F}
       \end{align}
       \begin{align}
-        \sum_{i=1}^{l_e}x_{k,i}^e+\sum_{j=1}^{l_f}x_{k,j}^f+\sum_{h=1}^{l_c}x_{k,h}^c=1 \quad\quad \forall k\in\{1,2,...,l_t\}
+        &\notag\phi_{t,s,e}(k_1^{cpu}-w_t)\tau^{tr}_{t,s,e} + \\ &\notag\gamma_{t,s,e}k_2^{cpu}\tau_{t,s,e}^{tr}+w_t\gamma_{t,s,e}-k_2^{cpu}\delta_t \\ &-(k_1^{cpu}-w_t)\delta_t\lambda_{t,e} \le 0 \\
+        &0 \le \phi_{t,s,e} \le \lambda_{t,e} \\
+        &Q(\gamma_{t,s,e}-1)+\lambda_{t,e} \le \phi_{t,s,e} \le \gamma_{t,s,e}Q \quad \forall{t \in T}, \forall{s \in S}, \forall{e \in E}
+      \end{align}
+    \end{subequations}
+
+    \begin{subequations}
+      \begin{align}
+        1 \le \sum_{e \in E}x_{t,e} + \sum_{f \in F}x_{t,f} + \sum_{c \in C}x_{t,c} \le N_t \quad \forall{t \in T}
+      \end{align}
+    \end{subequations}
+
+    \begin{subequations}
+      \begin{align}
+        &x_{t,c}(\lambda_{t,c} < \mu_{t,c}) => x_{t,c}(\lambda_{t,c} + \epsilon \le \mu_{t,c}) \\
+        &x_{t,c}\lambda_{t,c} = \lambda_{t,c} \\
+        &=> \epsilon x_{t,c} - k_1^{cpu}\lambda_{t,c} - k_2^{cpu} + w_t\lambda_{t,c} \le 0 \quad \forall{t \in T}, \forall{c \in C} \\
+        &\epsilon x_{t,f} - k_1^{cpu}\lambda_{t,f} - k_2^{cpu} + w_t\lambda_{t,f} \le 0 \quad \forall{t \in T}, \forall{f \in F} \\
+        &\epsilon x_{t,e} - k_1^{cpu}\lambda_{t,e} - k_2^{cpu} + w_t\lambda_{t,e} \le 0 \quad \forall{t \in T}, \forall{e \in E}
+      \end{align}
+    \end{subequations}
+
+    \begin{subequations}
+      \begin{align}
+        & \notag \min \sum_{t \in T}\sum_{e \in E} (x_{t,e}\pi_e\sum_{r \in R}f_t^r(\lambda_{t,e})) \\
+        &\notag + \sum_{t \in T}\sum_{f \in F} (x_{t,f}\pi_f\sum_{r \in R}f_t^r(\lambda_{t,f})) \\
+        & + \sum_{t \in T}\sum_{c \in C} (x_{t,c}\pi_c\sum_{r \in R}f_t^r(\lambda_{t,c}))
+      \end{align}
+      \begin{align}
+        & \notag \min \sum_{t \in T}\sum_{e \in E} x_{t,e}\Gamma_{t,e} \\
+        & \notag + \sum_{t \in T}\sum_{f \in F} x_{t,f}\Gamma_{t,f} \\
+        & + \sum_{t \in T}\sum_{c \in C} x_{t,c}\Gamma_{t,c}
+      \end{align}
+      \begin{align}
+        &\notag \Gamma_{t,e} = \pi_e((k_1^{cpu}+k_1^{ram}+k_1^{storage})\lambda_{t,e} \\
+        &\notag +k_2^{cpu}+k_2^{ram}+k_2^{storage}) \\
+        & = \pi_e(K_1\lambda_{t,e}+K_2)
+      \end{align}
+      \begin{align}
+        &\notag x_{t,e}\Gamma_{t,e} = K_1\pi_ex_{t,e}\lambda_{t,e} + K_2\pi_ex_{t,e} \\
+        &= K_1\pi_e\psi_{t,e} + K_2\pi_ex_{t,e}
+      \end{align}
+    \end{subequations}
+
+    \begin{subequations}
+      \begin{align}
+        & \notag \min \sum_{t \in T}\sum_{e \in E} K_1\pi_e\psi_{t,e}+K_2\pi_ex_{t,e} \\
+        & \notag \sum_{t \in T}\sum_{f \in F} K_1\pi_f\psi_{t,f}+K_2\pi_fx_{t,f} \\
+        & \sum_{t \in T}\sum_{c \in C} K_1\pi_c\psi_{t,c}+K_2\pi_cx_{t,c}
+      \end{align}
+    \end{subequations}
+
+    \begin{subequations}
+      \begin{align}
+        & \notag L(\underline{\underline x}, \underline{\underline \beta}, \underline{\underline \gamma}, \underline {\eta_1}, \underline {\eta_2}, \underline{\underline \nu}) = \sum_{t \in T}\sum_{e \in E} x_{t,e}\Gamma_{t,e} \\
+        &+ \sum_{t \in T}\sum_{f \in F} x_{t,f}\Gamma_{t,f} + \sum_{t \in T}\sum_{c \in C} x_{t,c}\Gamma_{t,c} + \sum
       \end{align}
     \end{subequations}
 
