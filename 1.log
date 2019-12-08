@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2019.2.6)  27 OCT 2019 18:46
-=======
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2019.1.16)  23 JUN 2019 21:27
->>>>>>> master
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2019.2.6)  8 DEC 2019 23:16
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -527,37 +523,46 @@ Overfull \hbox (14.12976pt too wide) in paragraph at lines 261--261
  []
 
 [2]
-Overfull \hbox (14.01035pt too wide) in paragraph at lines 355--355
+Overfull \hbox (48.37726pt too wide) in paragraph at lines 351--351
 [] 
  []
 
-./1.tex:369: Undefined control sequence.
-<argument> ...m*(u^m-z) + \sum _{m=1}^{l_m} \norm 
-                                                  \frac {\rho }{2} \|u^m-z\|^2 
-l.369       \end{align}
-                       
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
 
-./1.tex:369: Undefined control sequence.
-<argument> ...m*(u^m-z) + \sum _{m=1}^{l_m} \norm 
-                                                  \frac {\rho }{2} \|u^m-z\|^2 
-l.369       \end{align}
-                       
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
+Overfull \hbox (40.63643pt too wide) in paragraph at lines 358--358
+[] 
+ []
 
 [3]
-./1.tex:378: Undefined control sequence.
+Overfull \hbox (14.01035pt too wide) in paragraph at lines 398--398
+[] 
+ []
+
+./1.tex:412: Undefined control sequence.
+<argument> ...m*(u^m-z) + \sum _{m=1}^{l_m} \norm 
+                                                  \frac {\rho }{2} \|u^m-z\|^2 
+l.412       \end{align}
+                       
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./1.tex:412: Undefined control sequence.
+<argument> ...m*(u^m-z) + \sum _{m=1}^{l_m} \norm 
+                                                  \frac {\rho }{2} \|u^m-z\|^2 
+l.412       \end{align}
+                       
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./1.tex:421: Undefined control sequence.
 <argument> ...m} C_{k,m} + \nu ^m*(u^m-z) + \norm 
                                                   \frac {\rho }{2} \|u^m-z\|...
-l.378       \end{align}
+l.421       \end{align}
                        
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -565,10 +570,10 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-./1.tex:378: Undefined control sequence.
+./1.tex:421: Undefined control sequence.
 <argument> ...m} C_{k,m} + \nu ^m*(u^m-z) + \norm 
                                                   \frac {\rho }{2} \|u^m-z\|...
-l.378       \end{align}
+l.421       \end{align}
                        
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -576,10 +581,10 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-./1.tex:397: Undefined control sequence.
+./1.tex:440: Undefined control sequence.
 <argument> ... \nu ^{m,(k)}*(u^m-z^{(k)}) + \norm 
                                                   \frac {\rho }{2} \|u^m-z^{...
-l.397       \end{align}
+l.440       \end{align}
                        
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -587,10 +592,10 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-./1.tex:397: Undefined control sequence.
+./1.tex:440: Undefined control sequence.
 <argument> ... \nu ^{m,(k)}*(u^m-z^{(k)}) + \norm 
                                                   \frac {\rho }{2} \|u^m-z^{...
-l.397       \end{align}
+l.440       \end{align}
                        
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -599,36 +604,28 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 
-Overfull \hbox (41.90733pt too wide) in paragraph at lines 397--397
+Overfull \hbox (41.90733pt too wide) in paragraph at lines 440--440
 [] 
  []
 
 
-<<<<<<< HEAD
-./1.tex:404: LaTeX Error: Something's wrong--perhaps a missing \item.
-=======
-Overfull \hbox (62.3848pt too wide) in paragraph at lines 274--274
+Overfull \hbox (62.3848pt too wide) in paragraph at lines 457--457
 [] 
  []
 
-[2]
-Overfull \hbox (4.03009pt too wide) in paragraph at lines 310--310
+[4]
+Overfull \hbox (4.03009pt too wide) in paragraph at lines 493--493
 [] 
  []
 
 
-./1.tex:323: LaTeX Error: Something's wrong--perhaps a missing \item.
->>>>>>> master
+./1.tex:506: LaTeX Error: Something's wrong--perhaps a missing \item.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-<<<<<<< HEAD
-l.404         \ENDWHILE
-=======
-l.323         \ENDWHILE
->>>>>>> master
+l.506         \ENDWHILE
                        
 Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
@@ -658,63 +655,35 @@ Before submitting the final camera ready copy, remember to:
  uses only Type 1 fonts and that every step in the generation
  process uses the appropriate paper size.
 
-<<<<<<< HEAD
-[4
+[5
 
 ] (./1.aux) ) 
 Here is how much of TeX's memory you used:
  4058 strings out of 493029
  60028 string characters out of 6136235
- 143246 words of memory out of 5000000
+ 144246 words of memory out of 5000000
  7532 multiletter control sequences out of 15000+600000
  41145 words of font info for 88 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 37i,19n,26p,340b,329s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 37i,19n,26p,443b,342s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/s
 hare/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/t
 exlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive
 /texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/share/texlive/texmf-
 dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fo
 nts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/typ
-e1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/publi
-c/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsf
-onts/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/sy
-mbols/msam10.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pf
-b></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></usr/share/
-texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-d
-ist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on 1.pdf (4 pages, 147991 bytes).
+e1/public/amsfonts/cm/cmr5.pfb></usr/share/texlive/texmf-dist/fonts/type1/publi
+c/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfon
+ts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/
+cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/ms
+am10.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/
+share/texlive/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></usr/share/texlive/
+texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/font
+s/type1/urw/times/utmri8a.pfb>
+Output written on 1.pdf (5 pages, 163934 bytes).
 PDF statistics:
- 70 PDF objects out of 1000 (max. 8388607)
- 50 compressed objects within 1 object stream
-=======
-[3] (./1.aux) ) 
-Here is how much of TeX's memory you used:
- 4058 strings out of 493029
- 60028 string characters out of 6136234
- 140245 words of memory out of 5000000
- 7532 multiletter control sequences out of 15000+600000
- 41145 words of font info for 88 fonts, out of 8000000 for 9000
- 1141 hyphenation exceptions out of 8191
- 37i,19n,26p,340b,342s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr
-/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share
-/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texli
-ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/share/texlive/texm
-f-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/
-fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/t
-ype1/public/amsfonts/cm/cmr5.pfb></usr/share/texlive/texmf-dist/fonts/type1/pub
-lic/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsf
-onts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/c
-m/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></u
-sr/share/texlive/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></usr/share/texli
-ve/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/f
-onts/type1/urw/times/utmri8a.pfb>
-Output written on 1.pdf (3 pages, 138753 bytes).
-PDF statistics:
- 67 PDF objects out of 1000 (max. 8388607)
- 48 compressed objects within 1 object stream
->>>>>>> master
+ 77 PDF objects out of 1000 (max. 8388607)
+ 55 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 
