@@ -1,4 +1,4 @@
-PWD /home/mcslab/Latex
+PWD /home/mohammad/Latex
 INPUT /etc/texmf/web2c/texmf.cnf
 INPUT /usr/share/texmf/web2c/texmf.cnf
 INPUT /usr/share/texlive/texmf-dist/web2c/texmf.cnf
@@ -183,10 +183,7 @@ INPUT /usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb
 INPUT /usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb
 INPUT /usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb
 INPUT /usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb
-<<<<<<< HEAD
 INPUT /usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb
-=======
->>>>>>> master
 INPUT /usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb
 INPUT /usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb
 INPUT /usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb

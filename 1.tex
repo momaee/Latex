@@ -200,9 +200,9 @@
         &x_{t,c}f_t^r(\lambda_{t,c}) = k_1^rx_{t,c}\lambda_{t,c} + k_2^rx_{t,c} \\
         &\psi_{t,c} \triangleq x_{t,c}\lambda_{t,c} \Rightarrow 0 \leq \psi_{t,c} \leq \lambda_{t,c} \\
         &Q(x_{t,c}-1)+\lambda_{t,c} \leq \psi_{t,c} \leq x_{t,c}Q \\
-        &\notag Q = \max_{{t \ in T},{c \in C}} \lambda_{t,c} \\
-        &\notag =\max_{{t \ in T},{c \in C}} \sum_{s \in S}\beta_{t,s,c} \\
-        &\notag =\sum_{s\in S} \max_{{t \ in T},{c \in C}} \beta_{t,s,c} \\
+        &\notag Q = \max_{{t \in T},{c \in C}} \lambda_{t,c} \\
+        &\notag =\max_{{t \in T},{c \in C}} \sum_{s \in S}\beta_{t,s,c} \\
+        &\notag =\sum_{s\in S} \max_{{t \in T},{c \in C}} \beta_{t,s,c} \\
         &=\sum_{s \in S}\lambda_{t,s}
       \end{align}
     \end{subequations}
@@ -310,10 +310,53 @@
     \begin{subequations}
       \begin{align}
         & \notag L(\underline{\underline x}, \underline{\underline \beta}, \underline{\underline \gamma}, \underline {\eta_1}, \underline {\eta_2}, \underline{\underline \nu}) = \sum_{t \in T}\sum_{e \in E} x_{t,e}\Gamma_{t,e} \\
-        &+ \sum_{t \in T}\sum_{f \in F} x_{t,f}\Gamma_{t,f} + \sum_{t \in T}\sum_{c \in C} x_{t,c}\Gamma_{t,c} + \sum
+        & \notag + \sum_{t \in T}\sum_{f \in F} x_{t,f}\Gamma_{t,f} + \sum_{t \in T}\sum_{c \in C} x_{t,c}\Gamma_{t,c} \\
+        & \notag + \sum_{t \in T  }{\eta_{1,t}(1-\sum_{e \in E}x_{t,e} + \sum_{f \in F}x_{t,f} + \sum_{c \in C}x_{t,c})} \\
+        & \notag + \sum_{t \in T}{\eta_{2,t}(\sum_{e \in E}x_{t,e} + \sum_{f \in F}x_{t,f} + \sum_{c \in C}x_{t,c}-N_t)} \\
+        & + \sum_{t \in T}\sum_{s \in S}{\nu_{t,s}(\lambda_{t,s} - \sum_{e \in E}\beta_{t,s,e} + \sum_{f \in F}\beta_{t,s,f} +\sum_{c \in C}\beta_{t,s,c})}
       \end{align}
     \end{subequations}
 
+    \begin{subequations}
+      \begin{align}
+      & \notag L = \sum_{e \in E}\sum_{t \in T}(\sum_{s \in S}(\nu_{t,s}\beta_{t,s,e}+\frac{\nu_{t,s}\lambda_{t,s}}{3|E|}) \\
+      &\notag + x_{t,e}(\Gamma_{t,e}-\eta_{1,t}+\eta_{2,t})+\frac{\eta_{1,t}-N_t\eta_{2,t}}{3|E|}) \\
+      & \notag + \sum_{f \in F}\sum_{t \in T}(\sum_{s \in S}(\nu_{t,s}\beta_{t,s,f}+\frac{\nu_{t,s}\lambda_{t,s}}{3|F|}) \\
+      & \notag + x_{t,f}(\Gamma_{t,f}-\eta_{1,t}+\eta_{2,t})+\frac{\eta_{1,t}-N_t\eta_{2,t}}{3|F|}) \\
+      & \notag + \sum_{c \in C}\sum_{t \in T}(\sum_{s \in S}(\nu_{t,s}\beta_{t,s,c}+\frac{\nu_{t,s}\lambda_{t,s}}{3|C|}) \\
+      &+ x_{t,c}(\Gamma_{t,c}-\eta_{1,t}+\eta_{2,t})+\frac{\eta_{1,t}-N_t\eta_{2,t}}{3|C|})
+      \end{align}
+      \begin{align}
+      & L = \sum_{e \in E}L_e + \sum_{f \in F}L_f + \sum_{c \in C}L_c
+      \end{align}
+    \end{subequations}
+
+    \begin{subequations}
+      \begin{align}
+        & \notag g(\underline {\eta_1}, \underline {\eta_2}, \underline{\underline \nu}) = \inf_{\underline{\underline x}, \underline{\underline \beta}, \underline{\underline \gamma}}L(\underline{\underline x}, \underline{\underline \beta}, \underline{\underline \gamma}, \underline{\eta_1},\underline{\eta_2}, \underline{\underline \nu}) \\
+        & \notag = \sum_{e \in E}\inf_{\underline{\underline {x_e}}, \underline{\underline {\beta_e}}, \underline{\underline {\gamma_e}}}L_e(\underline{\underline {x_e}}, \underline{\underline {\beta_e}}, \underline{\underline {\gamma_e}}, \underline {\eta_1}, \underline {\eta_2}, \underline{\underline \nu}) \\
+        & \notag + \sum_{f \in F}\inf_{\underline{\underline {x_f}}, \underline{\underline {\beta_f}}, \underline{\underline {\gamma_f}}}L_f(\underline{\underline {x_f}}, \underline{\underline {\beta_f}}, \underline{\underline {\gamma_f}}, \underline {\eta_1}, \underline {\eta_2}, \underline{\underline \nu}) \\
+        & \notag + \sum_{c \in C}\inf_{\underline{\underline {x_c}}, \underline{\underline {\beta_c}}, \underline{\underline {\gamma_c}}}L_c(\underline{\underline {x_c}}, \underline{\underline {\beta_c}}, \underline{\underline {\gamma_c}}, \underline {\eta_1}, \underline {\eta_2}, \underline{\underline \nu}) \\
+        & \notag = \sum_{e \in E}g_e(\underline {\eta_1}, \underline {\eta_2}, \underline{\underline \nu}) \\
+        & \notag + \sum_{f \in F}g_f(\underline {\eta_1}, \underline {\eta_2}, \underline{\underline \nu}) \\
+        & + \sum_{c \in C}g_c(\underline {\eta_1}, \underline {\eta_2}, \underline{\underline \nu})
+      \end{align}
+    \end{subequations}
+
+    \begin{subequations}
+      \begin{align}
+        & \underline{\underline {x_e}}^{(k+1)}, \underline{\underline {\beta_e}}^{(k+1)}, \underline{\underline {\gamma_e}}^{(k+1)} = arg \min_{\underline{\underline {x_e}}, \underline{\underline {\beta_e}}, \underline{\underline {\gamma_e}}}L_e(\underline{\underline {x_e}}, \underline{\underline {\beta_e}}, \underline{\underline {\gamma_e}}, \underline {\eta_1}^{(k)}, \underline {\eta_2}^{(k)}, \underline{\underline \nu}^{(k)}) \\
+        & \underline{\underline {x_f}}^{(k+1)}, \underline{\underline {\beta_f}}^{(k+1)}, \underline{\underline {\gamma_f}}^{(k+1)} = arg \min_{\underline{\underline {x_f}}, \underline{\underline {\beta_f}}, \underline{\underline {\gamma_f}}}L_f(\underline{\underline {x_f}}, \underline{\underline {\beta_f}}, \underline{\underline {\gamma_f}}, \underline {\eta_1}^{(k)}, \underline {\eta_2}^{(k)}, \underline{\underline \nu}^{(k)}) \\
+        & \underline{\underline {x_c}}^{(k+1)}, \underline{\underline {\beta_c}}^{(k+1)}, \underline{\underline {\gamma_c}}^{(k+1)} = arg \min_{\underline{\underline {x_c}}, \underline{\underline {\beta_c}}, \underline{\underline {\gamma_c}}}L_c(\underline{\underline {x_c}}, \underline{\underline {\beta_c}}, \underline{\underline {\gamma_c}}, \underline {\eta_1}^{(k)}, \underline {\eta_2}^{(k)}, \underline{\underline \nu}^{(k)})
+      \end{align}
+    \end{subequations}
+    \begin{subequations}
+      \begin{align}
+        &\eta_{1,t}^{(k+1)} = \eta_{1,t}^{(k)} + \alpha^{(k)}(1-\sum_{e \in E}x_{t,e}^{(k+1)} + \sum_{f \in F}x_{t,f}^{(k+1)} + \sum_{c \in C}x_{t,c}^{(k+1)}) \\
+        &\eta_{2,t}^{(k+1)} = \eta_{2,t}^{(k)} + \alpha^{(k)}(\sum_{e \in E}x_{t,e}^{(k+1)} + \sum_{f \in F}x_{t,f}^{(k+1)} + \sum_{c \in C}x_{t,c}^{(k+1)}-N_t) \\
+        &\nu_{t,s}^{(k+1)} = \nu_{t,s}^{(k)} + \alpha^{(k)}(\lambda_{t,s}^{(k+1)} - \sum_{e \in E}\beta_{t,s,e}^{(k+1)} + \sum_{f \in F}\beta_{t,s,f}^{(k+1)} +\sum_{c \in C}\beta_{t,s,c}^{(k+1)})
+      \end{align}
+    \end{subequations}
     \subsection{Objective}
 
     \begin{subequations}
