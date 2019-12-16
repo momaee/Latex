@@ -8,12 +8,21 @@ l_e = 6;
 l_s = 5;
 l_t = 10;
 
-Cap_c = 6+rand(l_c, 1);
-Cap_f = 4+rand(l_f, 1);
-Cap_e = 2+rand(l_e, 1);
+N_r = 3; %index1:CPU, index2:Storage, index3: RAM  
+
+Cap_c = 6+rand(l_c, N_r);
+Cap_f = 4+rand(l_f, N_r);
+Cap_e = 2+rand(l_e, N_r);
 
 delta_t = 3+rand(l_t,1);
 w_t = 2+rand(l_t,1);
+N_t = 5+rand(l_t,1);
+k1_t = zeros(l_t,N_r);
+k2_t = zeros(l_t,N_r);
+k1_t(:,1) = w_t + 1;
+k2_t(:,1) = k1_t(:,1) .* rand(l_t,1);
+k1_t(:,2) = 10*rand(l_t,1);
+k2_t(:,2) = 10*rand(l_t,1);
 
 Pri_c = 1+rand(l_c, 1);
 Pri_f = 2+rand(l_f, 1);
@@ -27,7 +36,7 @@ R_c = 3+rand(l_c, 1);
 R_f = 2+rand(l_f, 1);
 R_e = 1+rand(l_e,1);
 
-lambda_t = rand(l_s, l_t);
+lambda_s_t = rand(l_s, l_t); 
 %%
 numofIterations = 100;
 alpha = 1;
