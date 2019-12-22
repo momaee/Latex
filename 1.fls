@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 PWD /home/pc-17/Latex
+=======
+PWD /home/mcslab/Latex
+>>>>>>> be351db4d70357d0b4c7496442497e0a8e025061
 INPUT /etc/texmf/web2c/texmf.cnf
 INPUT /usr/share/texmf/web2c/texmf.cnf
 INPUT /usr/share/texlive/texmf-dist/web2c/texmf.cnf
