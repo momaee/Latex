@@ -50,8 +50,8 @@ epsilon = 0.001;
 Q_t = sum(lambda_t_s, 2);
 topo = struct('l_t', l_t, 'l_s', l_s, 'lambda_t_s', lambda_t_s, 'epsilon', epsilon, 'Q_t', Q_t, 'k1_t', k1_t, 'k2_t', k2_t, 'w_t', w_t, 'CPU', CPU, 'delta_t', delta_t);
 %% Decentralized
-numofIters = 50;
-alpha0 = 0.8;
+numofIters = 30;
+alpha0 = 2;
 
 x_local = zeros(l_t, 1);
 beta_local = zeros(l_t, l_s);
@@ -64,6 +64,16 @@ eta1 = zeros(l_t, numofIters);
 eta2 = zeros(l_t, numofIters);
 nu = zeros(l_t, l_s, numofIters);
 
+s_bar_1 = -inf + zeros(l_t, l_n);
+s_bar_2 = s_bar_1;
+s_underbar_1 = inf + zeros(l_t, l_n);
+s_underbar_2 = s_underbar_1;
+rho_i_1 = zeros(l_t, l_n);
+rho_i_2 = rho_i_1;
+rho1 = zeros(l_t, 1);
+rho2 = rho1;
+p = l_t;
+
 for t = 1:numofIters
     for j = 1:l_n 
         [x_local, beta_local, gamma_local] = updateLocals(eta1(:,t), eta2(:,t), nu(:,:,t), topo, cap_n(j,:), tauTr_n(j), pri_n(j));
@@ -71,7 +81,20 @@ for t = 1:numofIters
         beta(:,:,j, t+1) = beta_local;
         gamma(:,:,j,t+1) = gamma_local;
     end
-    [eta1(:,t+1), eta2(:,t+1), nu(:,:,t+1)] = updateGlobals(alpha0, eta1(:,t), eta2(:,t), nu(:,:,t), x(:,:,t+1), beta(:,:,:,t+1), N_t, lambda_t_s);
+    
+    s_bar_1 = max(s_bar_1, -x(:,:,t+1));
+    s_bar_2 = max(s_bar_2, x(:,:,t+1));
+    
+    s_underbar_1 = min(s_underbar_1, -x(:,:,t+1));
+    s_underbar_2 = min(s_underbar_2, x(:,:,t+1));
+    
+    rho_i_1 = s_bar_1 - s_underbar_1;
+    rho_i_2 = s_bar_2 - s_underbar_2;
+    
+    rho1 = p*max(rho_i_1, [], 2);
+    rho2 = p*max(rho_i_2, [], 2);
+    
+    [eta1(:,t+1), eta2(:,t+1), nu(:,:,t+1)] = updateGlobals(alpha0/(t), eta1(:,t), rho1, eta2(:,t), rho2, nu(:,:,t), x(:,:,t+1), beta(:,:,:,t+1), N_t, lambda_t_s);
 end
 
 figure 
