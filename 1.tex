@@ -136,54 +136,22 @@
      \begin{align}
        \beta_{t,s,c} = \text{size of flow of task $t \in T$ from node $s \in S$ to node $c \in C$}
      \end{align}
-
-     \begin{align}
-        \gamma_{t,s,c} =
-        \begin{cases}
-          1 & \text{flow of task $t \in T$ from node $s \in S$ to node $c \in C$ exists.}
-          0 & \text{o.w.}
-        \end{cases}
-     \end{align}
-
-     \begin{align}
-        \gamma_{t,s,f} =
-        \begin{cases}
-          1 & \text{flow of task $t \in T$ from node $s \in S$ to node $f \in F$ exists.}
-          0 & \text{o.w.}
-        \end{cases}
-     \end{align}
-
-     \begin{align}
-        \gamma_{t,s,e} =
-        \begin{cases}
-          1 & \text{flow of task $t \in T$ from node $s \in S$ to node $e \in E$ exists.}
-          0 & \text{o.w.}
-        \end{cases}
-     \end{align}
    \end{subequations}
 
     \subsection{Constraints}
     \begin{subequations}
       \begin{align}
-        \lambda_{t,c} = \sum_{s\in S}\beta_{t,s,c} \quad \forall{t \in T}, \forall{s \in S}, \forall{c \in C} \\
-        \lambda_{t,f} = \sum_{s\in S}\beta_{t,s,f} \quad \forall{t \in T}, \forall{s \in S}, \forall{f \in F} \\
-        \lambda_{t,e} = \sum_{s\in S}\beta_{t,s,e} \quad \forall{t \in T}, \forall{s \in S}, \forall{e \in E}
+        \lambda_{t,c} = \sum_{s\in S}\beta_{t,s,c} \quad \forall{t \in T}, \forall{c \in C} \\
+        \lambda_{t,f} = \sum_{s\in S}\beta_{t,s,f} \quad \forall{t \in T}, \forall{f \in F} \\
+        \lambda_{t,e} = \sum_{s\in S}\beta_{t,s,e} \quad \forall{t \in T}, \forall{e \in E}
       \end{align}
     \end{subequations}
 
     \begin{subequations}
       \begin{align}
-        \gamma_{t,s,c} \le x_{t,c} \quad \forall{t \in T}, \forall{s \in S}, \forall{c \in C} \\
-        \gamma_{t,s,f} \le x_{t,f} \quad \forall{t \in T}, \forall{s \in S}, \forall{f \in F} \\
-        \gamma_{t,s,e} \le x_{t,e} \quad \forall{t \in T}, \forall{s \in S}, \forall{e \in E}
-      \end{align}
-    \end{subequations}
-
-    \begin{subequations}
-      \begin{align}
-          \gamma_{t,s,c}-1+\epsilon \le \beta_{t,s,c} \le \gamma_{t,s,c} \lambda_{t,s} \quad \forall{t \in T}, \forall{s \in S}, \forall{c \in C} \\
-          \gamma_{t,s,f}-1+\epsilon \le \beta_{t,s,f} \le \gamma_{t,s,f} \lambda_{t,s} \quad \forall{t \in T}, \forall{s \in S}, \forall{f \in F} \\
-          \gamma_{t,s,e}-1+\epsilon \le \beta_{t,s,e} \le \gamma_{t,s,e} \lambda_{t,s} \quad \forall{t \in T}, \forall{s \in S}, \forall{e \in E}
+        \frac{\lambda_{t,c}}{\sum_{s\in S}\lambda_{t,s}} \le x_{t,c} \quad \forall{t \in T}, \forall{c \in C} \\
+        \frac{\lambda_{t,f}}{\sum_{s\in S}\lambda_{t,s}} \le x_{t,f} \quad \forall{t \in T}, \forall{f \in F} \\
+        \frac{\lambda_{t,e}}{\sum_{s\in S}\lambda_{t,s}} \le x_{t,e} \quad \forall{t \in T}, \forall{e \in E}
       \end{align}
     \end{subequations}
 
@@ -230,34 +198,23 @@
         &\notag\text{We have:} \\
         &\frac{1}{\mu_{t,c}} = \frac{w_t}{f_t^{cpu}(\lambda_{t,c})} \\
         &f_t^{cpu}(\lambda_{t,c}) = k_1^{cpu}\lambda_{t,c}+k_2^{cpu} \\
-        &\notag\Rightarrow \gamma_{t,s,c} \tau_{t,c} = \gamma_{t,s,c} (\tau_{t,s,c}^{tr} + \frac{w_t}{(k_1^{cpu}-w_t)\lambda_{t,c} + k_2^{cpu}}) \\
+        &\notag\Rightarrow x_{t,c} \tau_{t,c} = x_{t,c} (\tau_{t,s,c}^{tr} + \frac{w_t}{(k_1^{cpu}-w_t)\lambda_{t,c} + k_2^{cpu}}) \\
         &\le \delta_t \quad \forall{t \in T}, \forall{s \in S}, \forall{c \in C}
       \end{align}
       \begin{align}
-        &\notag\gamma_{t,s,c}\lambda_{t,c}(k_1^{cpu}-w_t)\tau^{tr}_{t,s,c} + \\ &\notag\gamma_{t,s,c}k_2^{cpu}\tau_{t,s,c}^{tr}+w_t\gamma_{t,s,c}-k_2^{cpu}\delta_t \\ &-(k_1^{cpu}-w_t)\delta_t\lambda_{t,c} \le 0 \quad \forall{t \in T}, \forall{s \in S}, \forall{c \in C}
-      \end{align}
-      \begin{align}
-        &\phi_{t,s,c} = \gamma_{t,s,c}\lambda_{t,c} \\
-        &0 \le \phi_{t,s,c} \le \lambda_{t,c} \\
-        &Q(\gamma_{t,s,c}-1)+\lambda_{t,c} \le \phi_{t,s,c} \le \gamma_{t,s,c}Q
+        &\notag x_{t,c}\lambda_{t,c}(k_1^{cpu}-w_t)\tau^{tr}_{t,s,c} + \\ &\notag x_{t,c}k_2^{cpu}\tau_{t,s,c}^{tr}+w_t x_{t,c}-k_2^{cpu}\delta_t \\ &-(k_1^{cpu}-w_t)\delta_t\lambda_{t,c} \le 0 \quad \forall{t \in T}, \forall{s \in S}, \forall{c \in C}
       \end{align}
     \end{subequations}
 
     \begin{subequations}
       \begin{align}
-        &\notag\phi_{t,s,c}(k_1^{cpu}-w_t)\tau^{tr}_{t,s,c} + \\ &\notag\gamma_{t,s,c}k_2^{cpu}\tau_{t,s,c}^{tr}+w_t\gamma_{t,s,c}-k_2^{cpu}\delta_t \\ &-(k_1^{cpu}-w_t)\delta_t\lambda_{t,c} \le 0 \\
-        &0 \le \phi_{t,s,c} \le \lambda_{t,c} \\
-        &Q(\gamma_{t,s,c}-1)+\lambda_{t,c} \le \phi_{t,s,c} \le \gamma_{t,s,c}Q \quad \forall{t \in T}, \forall{s \in S}, \forall{c \in C}
+        &\notag\psi_{t,s,c}(k_1^{cpu}-w_t)\tau^{tr}_{t,s,c} + \\ &\notag x_{t,c}k_2^{cpu}\tau_{t,s,c}^{tr}+w_t x_{t,c}-k_2^{cpu}\delta_t \\ &-(k_1^{cpu}-w_t)\delta_t\lambda_{t,c} \le 0
       \end{align}
       \begin{align}
-        &\notag\phi_{t,s,f}(k_1^{cpu}-w_t)\tau^{tr}_{t,s,f} + \\ &\notag\gamma_{t,s,f}k_2^{cpu}\tau_{t,s,f}^{tr}+w_t\gamma_{t,s,f}-k_2^{cpu}\delta_t \\ &-(k_1^{cpu}-w_t)\delta_t\lambda_{t,f} \le 0 \\
-        &0 \le \phi_{t,s,f} \le \lambda_{t,c} \\
-        &Q(\gamma_{t,s,f}-1)+\lambda_{t,f} \le \phi_{t,s,f} \le \gamma_{t,s,f}Q \quad \forall{t \in T}, \forall{s \in S}, \forall{f \in F}
+        &\notag\psi_{t,s,f}(k_1^{cpu}-w_t)\tau^{tr}_{t,s,f} + \\ &\notag x_{t,f}k_2^{cpu}\tau_{t,s,f}^{tr}+w_t x_{t,f}-k_2^{cpu}\delta_t \\ &-(k_1^{cpu}-w_t)\delta_t\lambda_{t,f} \le 0
       \end{align}
       \begin{align}
-        &\notag\phi_{t,s,e}(k_1^{cpu}-w_t)\tau^{tr}_{t,s,e} + \\ &\notag\gamma_{t,s,e}k_2^{cpu}\tau_{t,s,e}^{tr}+w_t\gamma_{t,s,e}-k_2^{cpu}\delta_t \\ &-(k_1^{cpu}-w_t)\delta_t\lambda_{t,e} \le 0 \\
-        &0 \le \phi_{t,s,e} \le \lambda_{t,e} \\
-        &Q(\gamma_{t,s,e}-1)+\lambda_{t,e} \le \phi_{t,s,e} \le \gamma_{t,s,e}Q \quad \forall{t \in T}, \forall{s \in S}, \forall{e \in E}
+        &\notag\psi_{t,s,e}(k_1^{cpu}-w_t)\tau^{tr}_{t,s,e} + \\ &\notag x_{t,e}k_2^{cpu}\tau_{t,s,e}^{tr}+w_t x_{t,e}-k_2^{cpu}\delta_t \\ &-(k_1^{cpu}-w_t)\delta_t\lambda_{t,e} \le 0
       \end{align}
     \end{subequations}
 
@@ -309,7 +266,7 @@
 
     \begin{subequations}
       \begin{align}
-        & \notag L(\underline{\underline x}, \underline{\underline \beta}, \underline{\underline \gamma}, \underline {\eta_1}, \underline {\eta_2}, \underline{\underline \nu}) = \sum_{t \in T}\sum_{e \in E} x_{t,e}\Gamma_{t,e} \\
+        & \notag L(\underline{\underline x}, \underline{\underline \beta}, \underline {\eta_1}, \underline {\eta_2}, \underline{\underline \nu}) = \sum_{t \in T}\sum_{e \in E} x_{t,e}\Gamma_{t,e} \\
         & \notag + \sum_{t \in T}\sum_{f \in F} x_{t,f}\Gamma_{t,f} + \sum_{t \in T}\sum_{c \in C} x_{t,c}\Gamma_{t,c} \\
         & \notag + \sum_{t \in T  }{\eta_{1,t}(1-\sum_{e \in E}x_{t,e} + \sum_{f \in F}x_{t,f} + \sum_{c \in C}x_{t,c})} \\
         & \notag + \sum_{t \in T}{\eta_{2,t}(\sum_{e \in E}x_{t,e} + \sum_{f \in F}x_{t,f} + \sum_{c \in C}x_{t,c}-N_t)} \\
@@ -333,10 +290,10 @@
 
     \begin{subequations}
       \begin{align}
-        & \notag g(\underline {\eta_1}, \underline {\eta_2}, \underline{\underline \nu}) = \inf_{\underline{\underline x}, \underline{\underline \beta}, \underline{\underline \gamma}}L(\underline{\underline x}, \underline{\underline \beta}, \underline{\underline \gamma}, \underline{\eta_1},\underline{\eta_2}, \underline{\underline \nu}) \\
-        & \notag = \sum_{e \in E}\inf_{\underline{\underline {x_e}}, \underline{\underline {\beta_e}}, \underline{\underline {\gamma_e}}}L_e(\underline{\underline {x_e}}, \underline{\underline {\beta_e}}, \underline{\underline {\gamma_e}}, \underline {\eta_1}, \underline {\eta_2}, \underline{\underline \nu}) \\
-        & \notag + \sum_{f \in F}\inf_{\underline{\underline {x_f}}, \underline{\underline {\beta_f}}, \underline{\underline {\gamma_f}}}L_f(\underline{\underline {x_f}}, \underline{\underline {\beta_f}}, \underline{\underline {\gamma_f}}, \underline {\eta_1}, \underline {\eta_2}, \underline{\underline \nu}) \\
-        & \notag + \sum_{c \in C}\inf_{\underline{\underline {x_c}}, \underline{\underline {\beta_c}}, \underline{\underline {\gamma_c}}}L_c(\underline{\underline {x_c}}, \underline{\underline {\beta_c}}, \underline{\underline {\gamma_c}}, \underline {\eta_1}, \underline {\eta_2}, \underline{\underline \nu}) \\
+        & \notag g(\underline {\eta_1}, \underline {\eta_2}, \underline{\underline \nu}) = \inf_{\underline{\underline x}, \underline{\underline \beta}}L(\underline{\underline x}, \underline{\underline \beta}, \underline{\eta_1},\underline{\eta_2}, \underline{\underline \nu}) \\
+        & \notag = \sum_{e \in E}\inf_{\underline{\underline {x_e}}, \underline{\underline {\beta_e}}}L_e(\underline{\underline {x_e}}, \underline{\underline {\beta_e}}, \underline {\eta_1}, \underline {\eta_2}, \underline{\underline \nu}) \\
+        & \notag + \sum_{f \in F}\inf_{\underline{\underline {x_f}}, \underline{\underline {\beta_f}},}L_f(\underline{\underline {x_f}}, \underline{\underline {\beta_f}}, \underline {\eta_1}, \underline {\eta_2}, \underline{\underline \nu}) \\
+        & \notag + \sum_{c \in C}\inf_{\underline{\underline {x_c}}, \underline{\underline {\beta_c}},}L_c(\underline{\underline {x_c}}, \underline{\underline {\beta_c}}, \underline {\eta_1}, \underline {\eta_2}, \underline{\underline \nu}) \\
         & \notag = \sum_{e \in E}g_e(\underline {\eta_1}, \underline {\eta_2}, \underline{\underline \nu}) \\
         & \notag + \sum_{f \in F}g_f(\underline {\eta_1}, \underline {\eta_2}, \underline{\underline \nu}) \\
         & + \sum_{c \in C}g_c(\underline {\eta_1}, \underline {\eta_2}, \underline{\underline \nu})
@@ -345,9 +302,9 @@
 
     \begin{subequations}
       \begin{align}
-        & \underline{\underline {x_e}}^{(k+1)}, \underline{\underline {\beta_e}}^{(k+1)}, \underline{\underline {\gamma_e}}^{(k+1)} = arg \min_{\underline{\underline {x_e}}, \underline{\underline {\beta_e}}, \underline{\underline {\gamma_e}}}L_e(\underline{\underline {x_e}}, \underline{\underline {\beta_e}}, \underline{\underline {\gamma_e}}, \underline {\eta_1}^{(k)}, \underline {\eta_2}^{(k)}, \underline{\underline \nu}^{(k)}) \\
-        & \underline{\underline {x_f}}^{(k+1)}, \underline{\underline {\beta_f}}^{(k+1)}, \underline{\underline {\gamma_f}}^{(k+1)} = arg \min_{\underline{\underline {x_f}}, \underline{\underline {\beta_f}}, \underline{\underline {\gamma_f}}}L_f(\underline{\underline {x_f}}, \underline{\underline {\beta_f}}, \underline{\underline {\gamma_f}}, \underline {\eta_1}^{(k)}, \underline {\eta_2}^{(k)}, \underline{\underline \nu}^{(k)}) \\
-        & \underline{\underline {x_c}}^{(k+1)}, \underline{\underline {\beta_c}}^{(k+1)}, \underline{\underline {\gamma_c}}^{(k+1)} = arg \min_{\underline{\underline {x_c}}, \underline{\underline {\beta_c}}, \underline{\underline {\gamma_c}}}L_c(\underline{\underline {x_c}}, \underline{\underline {\beta_c}}, \underline{\underline {\gamma_c}}, \underline {\eta_1}^{(k)}, \underline {\eta_2}^{(k)}, \underline{\underline \nu}^{(k)})
+        & \underline{\underline {x_e}}^{(k+1)}, \underline{\underline {\beta_e}}^{(k+1)} = arg \min_{\underline{\underline {x_e}}, \underline{\underline {\beta_e}}}L_e(\underline{\underline {x_e}}, \underline{\underline {\beta_e}}, \underline {\eta_1}^{(k)}, \underline {\eta_2}^{(k)}, \underline{\underline \nu}^{(k)}) \\
+        & \underline{\underline {x_f}}^{(k+1)}, \underline{\underline {\beta_f}}^{(k+1)} = arg \min_{\underline{\underline {x_f}}, \underline{\underline {\beta_f}}}L_f(\underline{\underline {x_f}}, \underline{\underline {\beta_f}}, \underline {\eta_1}^{(k)}, \underline {\eta_2}^{(k)}, \underline{\underline \nu}^{(k)}) \\
+        & \underline{\underline {x_c}}^{(k+1)}, \underline{\underline {\beta_c}}^{(k+1)} = arg \min_{\underline{\underline {x_c}}, \underline{\underline {\beta_c}}}L_c(\underline{\underline {x_c}}, \underline{\underline {\beta_c}}, \underline {\eta_1}^{(k)}, \underline {\eta_2}^{(k)}, \underline{\underline \nu}^{(k)})
       \end{align}
     \end{subequations}
     \begin{subequations}
