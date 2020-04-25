@@ -3,10 +3,14 @@
 % The preceding line is only needed to identify funding in the first footnote. If that is unneeded, please comment it out.
 \usepackage{cite}
 \usepackage{amsmath,amssymb,amsfonts}
-\usepackage{algorithmic}
+\usepackage{algorithmicx}
 \usepackage{graphicx}
 \usepackage{textcomp}
 \usepackage{algorithm}
+\usepackage{algpseudocode}
+\renewcommand{\algorithmicrequire}{\textbf{Input:}}
+\renewcommand{\algorithmicensure}{\textbf{Output:}}
+\def\NoNumber#1{{\def\alglinenumber##1{}\State #1}\addtocounter{ALG@line}{-1}}
 \def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
   T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
 \begin{document}
@@ -458,16 +462,60 @@
     \end{subequations}
 
     \begin{algorithm}
-      \caption{}
-      \begin{algorithmic}
-        \WHILE{not converged}
-        1. update $x^c, x^f, x^e$ using (19a) \newline
-        2. update lagrangian multipliers using (20a) and (21a) \newline
-        $\alpha = \frac{\alpha_0}{k}$ for each iteration $k$
-        \ENDWHILE
-      \end{algorithmic}
+    \renewcommand{\thealgorithm}{}
+    \caption{Test Algorithm}\label{euclid}
+    \begin{algorithmic}[1]
+      % \Procedure{Euclid}{$a,b$}\Comment{The g.c.d. of a and b}
+      %   \State $r\gets a\bmod b$
+      %   \While{$r\not=0$}\Comment{We have the answer if r is 0}
+      %   \State $a\gets b$
+      %   \State $b\gets r$
+      %   \State $r\gets a\bmod b$
+      %   \EndWhile\label{euclidendwhile}
+      %   \State \textbf{return} $b$\Comment{The gcd is b}
+      %   \NoNumber{This line will not have a number!}
+      % \EndProcedure
+      \For{$n=1:L_v$}
+        \State{Determine the set of states $Z_n$}
+        \State $RemovedStates={}$
+        \For{$j\in Z_n$}
+          \State{Determine the index of computational node $l$ and the index of task $t$
+          and the index of part $u$}
+          \State $XP_n^j=Z_{n-1}$
+          \If{$j\neq 0$}
+            \For{$i \in XP_n^j$}
+              \If{$ServerResource < 0$}
+                \State $XP_n^j = XP_n^j - \{i\}$
+              \EndIf
+            \EndFor
+          \EndIf
+          \If{$XP_n^j \neq \emptyset$}
+            \For{$i \in XP_n^j$}
+              \State{Calculate $T_{n-1,n}^{i,j}$}
+            \EndFor
+            \State{Calculate $I_n^j$ and $\Lambda_n^j$}
+            \State{Calculate $\phi_n^j$}
+            \If{$j\neq 0$}
+              \State $ServerResource < 0$
+            \EndIf
+          \Else
+            \State $RemovedStates = RemovedStates + \{j\}$
+          \EndIf
+        \EndFor
+        \If{$RemovedStates = Z_n$}
+          \State{Set $H=\sum_{m=1}^{t}{N_m}$ and $ResourceIndicator=0$}
+          \State{Determine the Viterbi path $P$ with $H$}
+          \State\textbf{break}
+        \Else
+            \State{Remove all states in the $RemovedStates$ from the $Z_n$}
+        \EndIf
+      \EndFor
+    \If{$ResourceIndicator = 1$}
+      \State{Determine the Viterbi path $P$ with $H$}
+    \EndIf
+      \State{Determine the task scheduling using Viterbi path $P$}
+    \end{algorithmic}
     \end{algorithm}
-
 
     % \begin{equation}
     %   P_i(u_i) = P_i^{idle} + (P_i^{max} - P_i^{idle}) u_i

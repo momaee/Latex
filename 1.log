@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2019.2.6)  11 FEB 2020 17:51
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2019.2.6)  25 APR 2020 15:40
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -189,26 +189,30 @@ Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
 LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
 (Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
 ))
-(/usr/share/texlive/texmf-dist/tex/latex/algorithms/algorithmic.sty
-Package: algorithmic 2009/08/24 v0.1 Document Style `algorithmic'
+(/usr/share/texlive/texmf-dist/tex/latex/algorithmicx/algorithmicx.sty
+Package: algorithmicx 2005/04/27 v1.2 Algorithmicx
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/ifthen.sty
 Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
 )
+Document Style algorithmicx 1.2 - a greatly improved `algorithmic' style
+\c@ALG@line=\count106
+\c@ALG@rem=\count107
+\c@ALG@nested=\count108
+\ALG@tlm=\skip47
+\ALG@thistlm=\skip48
+\c@ALG@Lnr=\count109
+\c@ALG@blocknr=\count110
+\c@ALG@storecount=\count111
+\c@ALG@tmpcounter=\count112
+\ALG@tmplength=\skip49
+) (/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
+Package: graphicx 2014/10/28 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
+
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/keyval.sty
 Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
 \KV@toks@=\toks20
 )
-\c@ALC@unique=\count106
-\c@ALC@line=\count107
-\c@ALC@rem=\count108
-\c@ALC@depth=\count109
-\ALC@tlm=\skip47
-\algorithmicindent=\skip48
-)
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
-Package: graphicx 2014/10/28 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
-
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
 Package: graphics 2016/01/03 v1.0q Standard LaTeX Graphics (DPC,SPQR)
 
@@ -229,7 +233,7 @@ Package: infwarerr 2010/04/08 v1.3 Providing info/warning/error messages (HO)
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ltxcmds.sty
 Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
 )
-\Gread@gobject=\count110
+\Gread@gobject=\count113
 ))
 \Gin@req@height=\dimen135
 \Gin@req@width=\dimen136
@@ -322,50 +326,54 @@ nment
 
 (/usr/share/texlive/texmf-dist/tex/latex/float/float.sty
 Package: float 2001/11/08 v1.3d Float enhancements (AL)
-\c@float@type=\count111
+\c@float@type=\count114
 \float@exts=\toks21
 \float@box=\box30
 \@float@everytoks=\toks22
 \@floatcapt=\box31
 )
 \@float@every@algorithm=\toks23
-\c@algorithm=\count112
+\c@algorithm=\count115
+)
+(/usr/share/texlive/texmf-dist/tex/latex/algorithmicx/algpseudocode.sty
+Package: algpseudocode 
+
+Document Style - pseudocode environments for use with the `algorithmicx' style
 ) (./1.aux)
 \openout1 = `1.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 12.
-LaTeX Font Info:    ... okay on input line 12.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 12.
-LaTeX Font Info:    ... okay on input line 12.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 12.
-LaTeX Font Info:    ... okay on input line 12.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 12.
-LaTeX Font Info:    ... okay on input line 12.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 12.
-LaTeX Font Info:    ... okay on input line 12.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 12.
-LaTeX Font Info:    ... okay on input line 12.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 12.
-LaTeX Font Info:    Try loading font information for TS1+cmr on input line 12.
-
-(/usr/share/texlive/texmf-dist/tex/latex/base/ts1cmr.fd
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 16.
+LaTeX Font Info:    Try loading font information for TS1+cmr on input line 16.
+ (/usr/share/texlive/texmf-dist/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 12.
+LaTeX Font Info:    ... okay on input line 16.
 
 -- Lines per column: 56 (exact).
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count113
+\scratchcounter=\count116
 \scratchdimen=\dimen137
 \scratchbox=\box32
-\nofMPsegments=\count114
-\nofMParguments=\count115
+\nofMPsegments=\count117
+\nofMParguments=\count118
 \everyMPshowfont=\toks24
-\MPscratchCnt=\count116
+\MPscratchCnt=\count119
 \MPscratchDim=\dimen138
-\MPnumerator=\count117
-\makeMPintoPDFobject=\count118
+\MPnumerator=\count120
+\makeMPintoPDFobject=\count121
 \everyMPtoPDFconversion=\toks25
 ) (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
 Package: pdftexcmds 2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO
@@ -415,23 +423,23 @@ G,.JBIG2,.JB2,.eps]
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-LaTeX Font Info:    Calculating math sizes for size <11> on input line 30.
-LaTeX Font Info:    Try loading font information for U+msa on input line 30.
+LaTeX Font Info:    Calculating math sizes for size <11> on input line 34.
+LaTeX Font Info:    Try loading font information for U+msa on input line 34.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 30.
+LaTeX Font Info:    Try loading font information for U+msb on input line 34.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-Underfull \hbox (badness 10000) in paragraph at lines 82--86
+Underfull \hbox (badness 10000) in paragraph at lines 86--90
 
  []
 
 
-Overfull \hbox (24.1538pt too wide) in paragraph at lines 138--138
+Overfull \hbox (24.1538pt too wide) in paragraph at lines 142--142
 [] 
  []
 
@@ -439,17 +447,17 @@ Overfull \hbox (24.1538pt too wide) in paragraph at lines 138--138
 
 
 ]
-Overfull \hbox (35.6425pt too wide) in paragraph at lines 166--166
+Overfull \hbox (35.6425pt too wide) in paragraph at lines 170--170
 [] 
  []
 
 [2]
-Overfull \hbox (29.01135pt too wide) in paragraph at lines 319--319
+Overfull \hbox (29.01135pt too wide) in paragraph at lines 323--323
 [] 
  []
 
 
-Overfull \hbox (14.01035pt too wide) in paragraph at lines 359--359
+Overfull \hbox (14.01035pt too wide) in paragraph at lines 363--363
 [] 
  []
 
@@ -457,10 +465,10 @@ Overfull \hbox (14.01035pt too wide) in paragraph at lines 359--359
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [3]
-./1.tex:373: Undefined control sequence.
+./1.tex:377: Undefined control sequence.
 <argument> ...m*(u^m-z) + \sum _{m=1}^{l_m} \norm 
                                                   \frac {\rho }{2} \|u^m-z\|^2 
-l.373       \end{align}
+l.377       \end{align}
                        
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -468,10 +476,10 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-./1.tex:373: Undefined control sequence.
+./1.tex:377: Undefined control sequence.
 <argument> ...m*(u^m-z) + \sum _{m=1}^{l_m} \norm 
                                                   \frac {\rho }{2} \|u^m-z\|^2 
-l.373       \end{align}
+l.377       \end{align}
                        
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -479,10 +487,10 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-./1.tex:382: Undefined control sequence.
+./1.tex:386: Undefined control sequence.
 <argument> ...m} C_{k,m} + \nu ^m*(u^m-z) + \norm 
                                                   \frac {\rho }{2} \|u^m-z\|...
-l.382       \end{align}
+l.386       \end{align}
                        
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -490,10 +498,10 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-./1.tex:382: Undefined control sequence.
+./1.tex:386: Undefined control sequence.
 <argument> ...m} C_{k,m} + \nu ^m*(u^m-z) + \norm 
                                                   \frac {\rho }{2} \|u^m-z\|...
-l.382       \end{align}
+l.386       \end{align}
                        
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -501,10 +509,10 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-./1.tex:401: Undefined control sequence.
+./1.tex:405: Undefined control sequence.
 <argument> ... \nu ^{m,(k)}*(u^m-z^{(k)}) + \norm 
                                                   \frac {\rho }{2} \|u^m-z^{...
-l.401       \end{align}
+l.405       \end{align}
                        
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -512,10 +520,10 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-./1.tex:401: Undefined control sequence.
+./1.tex:405: Undefined control sequence.
 <argument> ... \nu ^{m,(k)}*(u^m-z^{(k)}) + \norm 
                                                   \frac {\rho }{2} \|u^m-z^{...
-l.401       \end{align}
+l.405       \end{align}
                        
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -524,7 +532,7 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 
-Overfull \hbox (41.90733pt too wide) in paragraph at lines 401--401
+Overfull \hbox (41.90733pt too wide) in paragraph at lines 405--405
 [] 
  []
 
@@ -532,7 +540,7 @@ Overfull \hbox (41.90733pt too wide) in paragraph at lines 401--401
 Underfull \vbox (badness 4832) has occurred while \output is active []
 
 
-Overfull \hbox (62.3848pt too wide) in paragraph at lines 418--418
+Overfull \hbox (62.3848pt too wide) in paragraph at lines 422--422
 [] 
  []
 
@@ -540,21 +548,9 @@ Overfull \hbox (62.3848pt too wide) in paragraph at lines 418--418
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [4]
-Overfull \hbox (4.03009pt too wide) in paragraph at lines 454--454
+Overfull \hbox (4.03009pt too wide) in paragraph at lines 458--458
 [] 
  []
-
-
-./1.tex:467: LaTeX Error: Something's wrong--perhaps a missing \item.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.467         \ENDWHILE
-                       
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
 
 (./1.bbl
 
@@ -581,35 +577,32 @@ Before submitting the final camera ready copy, remember to:
  uses only Type 1 fonts and that every step in the generation
  process uses the appropriate paper size.
 
-[5
-
-] (./1.aux) ) 
+[5] (./1.aux) ) 
 Here is how much of TeX's memory you used:
- 4058 strings out of 493029
- 60028 string characters out of 6136235
- 142246 words of memory out of 5000000
- 7532 multiletter control sequences out of 15000+600000
+ 4414 strings out of 493029
+ 65660 string characters out of 6136235
+ 147583 words of memory out of 5000000
+ 7884 multiletter control sequences out of 15000+600000
  41145 words of font info for 88 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 37i,19n,26p,340b,342s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/s
-hare/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/t
-exlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive
-/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/share/texlive/texmf-
-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fo
-nts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/typ
-e1/public/amsfonts/cm/cmr5.pfb></usr/share/texlive/texmf-dist/fonts/type1/publi
-c/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfon
-ts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/
-cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/ms
-am10.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/
-share/texlive/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></usr/share/texlive/
-texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/font
-s/type1/urw/times/utmri8a.pfb>
-Output written on 1.pdf (5 pages, 162749 bytes).
+ 37i,19n,26p,340b,294s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr
+/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share
+/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texli
+ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/share/texlive/texm
+f-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/
+fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/t
+ype1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/pub
+lic/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/am
+sfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/
+symbols/msam10.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.
+pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></usr/shar
+e/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf
+-dist/fonts/type1/urw/times/utmri8a.pfb>
+Output written on 1.pdf (5 pages, 160232 bytes).
 PDF statistics:
- 77 PDF objects out of 1000 (max. 8388607)
- 55 compressed objects within 1 object stream
+ 73 PDF objects out of 1000 (max. 8388607)
+ 52 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 
