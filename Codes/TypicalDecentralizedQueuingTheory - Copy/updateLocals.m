@@ -1,4 +1,4 @@
-function [x, beta] = updateLocals(eta1, eta2, nu1, nu2, topo, cap, tauTr, pri)
+function [x, beta, gamma] = updateLocals(eta1, eta2, nu, topo, cap, tauTr, pri)
     l_t = topo.l_t;
     l_s = topo.l_s;
     lambda_t_s = topo.lambda_t_s;
@@ -16,10 +16,13 @@ function [x, beta] = updateLocals(eta1, eta2, nu1, nu2, topo, cap, tauTr, pri)
     PSI_RENG_MAT = reshape(PSI_RENG, l_t, 1);
     X_RENG = l_t+1 : 2*l_t;
     X_RENG_MAT = reshape(X_RENG, l_t, 1);
-    BETA_RENG = 2*l_t+1 : (2+l_s)*l_t;
+    GAMMA_RENG = 2*l_t+1 : (2+l_s)*l_t;
+    GAMMA_RENG_MAT = reshape(GAMMA_RENG, l_t, l_s);
+    BETA_RENG = (2+l_s)*l_t+1 : (2+2*l_s)*l_t;
     BETA_RENG_MAT = reshape(BETA_RENG, l_t, l_s);
-    
-    numofTotVar = length(PSI_RENG) + length(X_RENG) + length(BETA_RENG);
+    PHI_RENG = (2+2*l_s)*l_t+1 : (2+3*l_s)*l_t;
+    PHI_RENG_MAT = reshape(PHI_RENG, l_t, l_s);
+    numofTotVar = (2+3*l_s)*l_t;
     %%
     blx = zeros(1, numofTotVar);
     bux = inf*ones(1, numofTotVar);
@@ -31,17 +34,40 @@ function [x, beta] = updateLocals(eta1, eta2, nu1, nu2, topo, cap, tauTr, pri)
     %% constraint 5
     bux(BETA_RENG_MAT) = lambda_t_s;
     bux(X_RENG) = 1;
+    bux(GAMMA_RENG) = 1;
     %% constraint 7
-    for i=1:size(X_RENG_MAT,1) %l_t
-        numofCons = numofCons + 1;
-        aRow = zeros(1,numofTotVar);
-        aRow(BETA_RENG_MAT(i,:)) = 1;
-        aRow(X_RENG_MAT(i)) = -Q_t(i);
-        A(numofCons,:) = aRow;
-        buc(numofCons) = 0;
-        blc(numofCons) = -inf;
-    end
-    %% constraint 10
+    for k=1:size(GAMMA_RENG_MAT,2) %l_s
+        for i=1:size(GAMMA_RENG_MAT,1) %l_t
+            numofCons = numofCons + 1;
+            aRow = zeros(1,numofTotVar);
+            aRow(GAMMA_RENG_MAT(i,k)) = 1;
+            aRow(X_RENG_MAT(i)) = -1;
+            A(numofCons,:) = aRow;
+            buc(numofCons) = 0;
+            blc(numofCons) = -inf;
+        end
+    end    
+    %% constraint 8
+    for k=1:size(BETA_RENG_MAT,2) %l_s
+        for i=1:size(BETA_RENG_MAT,1) %l_t
+            numofCons = numofCons + 1;
+            aRow = zeros(1,numofTotVar);
+            aRow(BETA_RENG_MAT(i,k)) = 1;
+            aRow(GAMMA_RENG_MAT(i,k)) = -lambda_t_s(i,k);
+            A(numofCons,:) = aRow;
+            buc(numofCons) = 0;
+            blc(numofCons) = -inf;
+            
+            numofCons = numofCons + 1;
+            aRow = zeros(1,numofTotVar);
+            aRow(BETA_RENG_MAT(i,k)) = 1;
+            aRow(GAMMA_RENG_MAT(i,k)) = -1;
+            A(numofCons,:) = aRow;
+            buc(numofCons) = inf;
+            blc(numofCons) = -1+epsilon;
+        end
+    end    
+    %% constraint 11
     for i=1:size(PSI_RENG_MAT,1) %l_t
         numofCons = numofCons + 1;
         aRow = zeros(1,numofTotVar);
@@ -69,7 +95,7 @@ function [x, beta] = updateLocals(eta1, eta2, nu1, nu2, topo, cap, tauTr, pri)
         blc(numofCons) = -Q_t(i);
     end
 
-    %% constraint 11
+    %% constraint 12
     for r=1:size(k1_t,2) %l_r
         numofCons = numofCons + 1;
         aRow = zeros(1,numofTotVar);
@@ -80,21 +106,47 @@ function [x, beta] = updateLocals(eta1, eta2, nu1, nu2, topo, cap, tauTr, pri)
         blc(numofCons) = -inf;
     end
 
-    %% constraint 13 //////////////////
-    for k=1:size(BETA_RENG_MAT,2) %l_s
-        for i=1:size(BETA_RENG_MAT,1) %l_t
+    %% constraint 14
+    for k=1:size(PHI_RENG_MAT,2) %l_s
+        for i=1:size(PHI_RENG_MAT,1) %l_t
             numofCons = numofCons + 1;
             aRow = zeros(1,numofTotVar);
-            aRow(PSI_RENG_MAT(i)) = (k1_t(i,CPU)-w_t(i))*tauTr;
-            aRow(X_RENG_MAT(i)) = k2_t(i,CPU)*tauTr + w_t(i);
+            aRow(PHI_RENG_MAT(i,k)) = (k1_t(i,CPU)-w_t(i))*tauTr;
+            aRow(GAMMA_RENG_MAT(i,k)) = k2_t(i,CPU)*tauTr + w_t(i);
             aRow(BETA_RENG_MAT(i,:)) = -(k1_t(i,CPU)-w_t(i))*delta_t(i);
             A(numofCons,:) = aRow;
             buc(numofCons) = k2_t(i,CPU)*delta_t(i);
             blc(numofCons) = -inf;
+            
+            numofCons = numofCons + 1;
+            aRow = zeros(1,numofTotVar);
+            aRow(PHI_RENG_MAT(i,k)) = 1;
+            aRow(BETA_RENG_MAT(i,:)) = -1;
+            A(numofCons,:) = aRow;
+            buc(numofCons) = 0;
+            blc(numofCons) = -inf;
+            
+            numofCons = numofCons + 1;
+            aRow = zeros(1,numofTotVar);
+            aRow(PHI_RENG_MAT(i,k)) = 1;
+            aRow(GAMMA_RENG_MAT(i,k)) = -Q_t(i);
+            A(numofCons,:) = aRow;
+            buc(numofCons) = 0;
+            blc(numofCons) = -inf;
+        
+            numofCons = numofCons + 1;
+            aRow = zeros(1,numofTotVar);
+            aRow(PHI_RENG_MAT(i,k)) = 1;
+            aRow(BETA_RENG_MAT(i,:)) = -1;
+            aRow(GAMMA_RENG_MAT(i,k)) = -Q_t(i);
+            A(numofCons,:) = aRow;
+            buc(numofCons) = inf;
+            blc(numofCons) = -Q_t(i);
+            
         end
     end
 
-    %% constraint 15
+    %% constraint 16
     for i=1:size(X_RENG_MAT,1) %l_t
         numofCons = numofCons + 1;
         aRow = zeros(1,numofTotVar);
@@ -107,11 +159,11 @@ function [x, beta] = updateLocals(eta1, eta2, nu1, nu2, topo, cap, tauTr, pri)
 
     %% Objective
     c = zeros(1,numofTotVar);
-    c(BETA_RENG_MAT) = nu2-nu1;
+    c(BETA_RENG_MAT) = nu;
     c(X_RENG_MAT) = pri*K2_t-eta1+eta2;
     c(PSI_RENG_MAT) = pri*K1_t;
     %% integer variables
-    ints = X_RENG;
+    ints = [X_RENG, GAMMA_RENG];
     %% Problem Defenition
     clear prob
     prob.c = c;
@@ -131,6 +183,8 @@ function [x, beta] = updateLocals(eta1, eta2, nu1, nu2, topo, cap, tauTr, pri)
 %       x = res.sol.bas.xx(X_RENG_MAT);
       beta = res.sol.int.xx(BETA_RENG_MAT);
 %       beta = res.sol.bas.xx(BETA_RENG_MAT);
+      gamma = res.sol.int.xx(GAMMA_RENG_MAT);
+%       gamma = res.sol.bas.xx(GAMMA_RENG_MAT);
     catch
       fprintf('MSKERROR: Could not get solution')
     end

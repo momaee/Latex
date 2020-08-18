@@ -248,7 +248,7 @@ prob.blc = blc;
 prob.buc = buc;
 prob.blx = blx;
 prob.bux = bux;
-prob.ints.sub = ints;
+% prob.ints.sub = ints;
 
 %% Problem Solving
 % Optimize the problem.
@@ -256,7 +256,8 @@ prob.ints.sub = ints;
 
 try 
   % Display the optimal solution.
-  res.sol.int.xx(X_RENG_MAT)
+%   res.sol.int.xx(X_RENG_MAT)
+  res.sol.bas.xx(X_RENG_MAT)
 catch
   fprintf('MSKERROR: Could not get solution')
 end

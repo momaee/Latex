@@ -51,7 +51,7 @@ Q_t = sum(lambda_t_s, 2);
 topo = struct('l_t', l_t, 'l_s', l_s, 'lambda_t_s', lambda_t_s, 'epsilon', epsilon, 'Q_t', Q_t, 'k1_t', k1_t, 'k2_t', k2_t, 'w_t', w_t, 'CPU', CPU, 'delta_t', delta_t);
 %% Decentralized
 numofIters = 30;
-alpha0 = 2;
+alpha0 = 1;
 
 x_local = zeros(l_t, 1);
 beta_local = zeros(l_t, l_s);
@@ -114,6 +114,14 @@ plot(mean(eta1))
 title('avg eta1')
 figure 
 plot(mean(eta2))
+title('avg eta2')
+
+figure 
+plot(mean(nu(1,:,:)))
+title('avg nu(1,:)')
+
+figure 
+plot(x())
 title('avg eta2')
 %% Centralized
 PSI_RENG = 1 : l_t*l_n;
