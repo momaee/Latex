@@ -94,21 +94,21 @@ function [x, beta] = updateLocals(eta1, eta2, nu1, nu2, topo, cap, tauTr, pri)
         end
     end
 
-    %% constraint 15
+    %% constraint 15, queue stability
     for i=1:size(X_RENG_MAT,1) %l_t
         numofCons = numofCons + 1;
         aRow = zeros(1,numofTotVar);
-        aRow(X_RENG_MAT(i)) = epsilon;
-        aRow(BETA_RENG_MAT(i,:)) = w_t(i)-k1_t(i);
+        aRow(X_RENG_MAT(i)) = epsilon*w_t(i)-k2_t(i,CPU);
+        aRow(PSI_RENG_MAT(i)) = w_t(i)-k1_t(i,CPU);
         A(numofCons,:) = aRow;
-        buc(numofCons) = k2_t(i);
+        buc(numofCons) = 0;
         blc(numofCons) = -inf;
     end
 
     %% Objective
     c = zeros(1,numofTotVar);
-    c(BETA_RENG_MAT) = nu2-nu1;
-    c(X_RENG_MAT) = pri*K2_t-eta1+eta2;
+    c(BETA_RENG_MAT) = nu2 - nu1;
+    c(X_RENG_MAT) = pri*K2_t - eta1 + eta2;
     c(PSI_RENG_MAT) = pri*K1_t;
     %% integer variables
     ints = X_RENG;

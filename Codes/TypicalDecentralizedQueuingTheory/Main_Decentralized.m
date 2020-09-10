@@ -3,11 +3,11 @@ addpath D:\Installed\Mosek\9.1\toolbox\r2015a
 clear
 clc
 
-l_c = 3;
-l_f = 4;
-l_e = 5;
-l_s = 3;
-l_t = 3;
+l_c = 2;
+l_f = 3;
+l_e = 4;
+l_s = 4;
+l_t = 4;
 l_n = l_c + l_f + l_e;
 
 N_r = 3; %index1:CPU, index2:Storage, index3:RAM  
@@ -21,7 +21,7 @@ cap_e = 80+rand(l_e, N_r);
 cap_n = [cap_c; cap_f; cap_e];
 
 delta_t = 30+rand(l_t,1);%%%%
-w_t = 4+rand(l_t,1);%%%%%%%%
+w_t = 4+rand(l_t,1);%%%%%%%%    
 N_t = 4+zeros(l_t,1); %%%%more better
 
 k1_t = zeros(l_t,N_r);
@@ -51,7 +51,7 @@ Q_t = sum(lambda_t_s, 2);
 topo = struct('l_t', l_t, 'l_s', l_s, 'lambda_t_s', lambda_t_s, 'epsilon', epsilon, 'Q_t', Q_t, 'k1_t', k1_t, 'k2_t', k2_t, 'w_t', w_t, 'CPU', CPU, 'delta_t', delta_t);
 %% Decentralized
 numofIters = 30;
-alpha0 = 1;
+alpha0 = 2;
 
 x_local = zeros(l_t, 1);
 beta_local = zeros(l_t, l_s);
@@ -92,13 +92,29 @@ for t = 1:numofIters
         [x_local, beta_local] = updateLocals(eta1(:,t), eta2(:,t), nu1(:,:,t), nu2(:,:,t), topo, cap_n(j,:), tauTr_n(j), pri_n(j));
         x(:,j, t+1) = x_local;
         beta(:,:,j, t+1) = beta_local;
+        
+%         s_bar_1(:,j) = max(s_bar_1(:,j), -x(:,j,t+1));
+%         s_bar_2(:,j) = max(s_bar_2(:,j), x(:,j,t+1));
+%         s_bar_nu1(:,:,j) = max(s_bar_nu1(:,:,j), -beta(:,:,j,t+1));
+%         s_bar_nu2(:,:,j) = max(s_bar_nu2(:,:,j), beta(:,:,j,t+1));
+%     
+%         s_underbar_1(:,j) = min(s_underbar_1(:,j), -x(:,j,t+1));
+%         s_underbar_2(:,j) = min(s_underbar_2(:,j), x(:,j,t+1));
+%         s_underbar_nu1(:,:,j) = min(s_underbar_nu1(:,:,j), -beta(:,:,j,t+1));
+%         s_underbar_nu2(:,:,j) = min(s_underbar_nu2(:,:,j), beta(:,:,j,t+1));
+%     
+%         rho_i_1(:,j) = s_bar_1(:,j) - s_underbar_1(:,j);
+%         rho_i_2(:,j) = s_bar_2(:,j) - s_underbar_2(:,j);
+%         rho_i_nu1(:,:,j) = s_bar_nu1(:,:,j) - s_underbar_nu1(:,:,j);
+%         rho_i_nu2(:,:,j) = s_bar_nu2(:,:,j) - s_underbar_nu2(:,:,j); 
+    
     end
     
     s_bar_1 = max(s_bar_1, -x(:,:,t+1));
     s_bar_2 = max(s_bar_2, x(:,:,t+1));
     s_bar_nu1 = max(s_bar_nu1, -beta(:,:,:,t+1));
     s_bar_nu2 = max(s_bar_nu2, beta(:,:,:,t+1));
-    
+       
     s_underbar_1 = min(s_underbar_1, -x(:,:,t+1));
     s_underbar_2 = min(s_underbar_2, x(:,:,t+1));
     s_underbar_nu1 = min(s_underbar_nu1, -beta(:,:,:,t+1));
@@ -116,6 +132,8 @@ for t = 1:numofIters
     rho_nu2 = p_nu * max(rho_i_nu2, [], 3);
     
     [eta1(:,t+1), eta2(:,t+1), nu1(:,:,t+1), nu2(:,:,t+1)] = updateGlobals(alpha0/(t), eta1(:,t), rho1, eta2(:,t), rho2, nu1(:,:,t), rho_nu1, nu2(:,:,t), rho_nu2, x(:,:,t+1), beta(:,:,:,t+1), N_t, lambda_t_s);
+    sum(x(:,:,t+1),2)
+    sum(beta(:,:,:,t+1),3)
 end
 
 figure 
@@ -280,15 +298,15 @@ for i=1:size(X_RENG_MAT,1) %l_t
      blc(numofCons) = 1;
 end
 
-%% constraint 15
+%% constraint 15, queue stability
 for j=1:size(X_RENG_MAT,2) %l_n
     for i=1:size(X_RENG_MAT,1) %l_t
         numofCons = numofCons + 1;
         aRow = zeros(1,numofTotVar);
-        aRow(X_RENG_MAT(i,j)) = epsilon;
-        aRow(BETA_RENG_MAT(i,j,:)) = w_t(i)-k1_t(i);
+        aRow(X_RENG_MAT(i,j)) = epsilon*w_t(i) - k2_t(i,CPU);
+        aRow(PSI_RENG_MAT(i,j)) = w_t(i)-k1_t(i,CPU);
         A(numofCons,:) = aRow;
-        buc(numofCons) = k2_t(i);
+        buc(numofCons) = 0;
         blc(numofCons) = -inf;
     end
 end

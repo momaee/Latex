@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/W32TeX) (preloaded format=pdflatex 2020.7.30)  5 AUG 2020 16:31
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/W32TeX) (preloaded format=pdflatex 2020.7.30)  25 AUG 2020 20:19
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -438,28 +438,196 @@ Underfull \hbox (badness 10000) in paragraph at lines 86--90
 
  []
 
+Missing character: There is no â in font ptmr7t!
+Missing character: There is no € in font ptmr7t!
+Missing character: There is no Œ in font ptmr7t!
+Missing character: There is no â in font ptmr7t!
+Missing character: There is no € in font ptmr7t!
+Missing character: There is no Œ in font ptmr7t!
+Missing character: There is no â in font ptmr7t!
+Missing character: There is no € in font ptmr7t!
+Missing character: There is no Œ in font ptmr7t!
+Missing character: There is no â in font ptmr7t!
+Missing character: There is no € in font ptmr7t!
+Missing character: There is no Œ in font ptmr7t!
+Missing character: There is no â in font ptmr7t!
+Missing character: There is no € in font ptmr7t!
+Missing character: There is no Œ in font ptmr7t!
+Missing character: There is no â in font ptmr7t!
+Missing character: There is no € in font ptmr7t!
+Missing character: There is no Œ in font ptmr7t!
+Missing character: There is no â in font ptmr7t!
+Missing character: There is no € in font ptmr7t!
+Missing character: There is no Œ in font ptmr7t!
+Missing character: There is no â in font ptmr7t!
+Missing character: There is no € in font ptmr7t!
+Missing character: There is no Œ in font ptmr7t!
 
 Overfull \hbox (24.1538pt too wide) in paragraph at lines 142--142
 [] 
  []
 
-! I can't write on file `1.pdf'.
-(Press Enter to retry, or Control-Z to exit; default file extension is `.pdf')
-Please type another file name for output
-! Emergency stop.
-<to be read again> 
-                   \endgroup \set@typeset@protect 
-l.166       \end{align}
-                       
-*** (job aborted, file error in nonstop mode)
+[1{d:/Installed/texlive/2017/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
 
- 
+
+]
+Overfull \hbox (35.6425pt too wide) in paragraph at lines 170--170
+[] 
+ []
+
+[2]
+Overfull \hbox (29.01135pt too wide) in paragraph at lines 323--323
+[] 
+ []
+
+
+Overfull \hbox (14.01035pt too wide) in paragraph at lines 363--363
+[] 
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [3]
+! Undefined control sequence.
+<argument> ...m*(u^m-z) + \sum _{m=1}^{l_m} \norm 
+                                                  \frac {\rho }{2} \|u^m-z\|^2 
+l.377       \end{align}
+                       
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+<argument> ...m*(u^m-z) + \sum _{m=1}^{l_m} \norm 
+                                                  \frac {\rho }{2} \|u^m-z\|^2 
+l.377       \end{align}
+                       
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+<argument> ...m} C_{k,m} + \nu ^m*(u^m-z) + \norm 
+                                                  \frac {\rho }{2} \|u^m-z\|...
+l.386       \end{align}
+                       
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+<argument> ...m} C_{k,m} + \nu ^m*(u^m-z) + \norm 
+                                                  \frac {\rho }{2} \|u^m-z\|...
+l.386       \end{align}
+                       
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+<argument> ... \nu ^{m,(k)}*(u^m-z^{(k)}) + \norm 
+                                                  \frac {\rho }{2} \|u^m-z^{...
+l.405       \end{align}
+                       
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+<argument> ... \nu ^{m,(k)}*(u^m-z^{(k)}) + \norm 
+                                                  \frac {\rho }{2} \|u^m-z^{...
+l.405       \end{align}
+                       
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+Overfull \hbox (41.90733pt too wide) in paragraph at lines 405--405
+[] 
+ []
+
+
+Underfull \vbox (badness 4832) has occurred while \output is active []
+
+
+Overfull \hbox (62.3848pt too wide) in paragraph at lines 422--422
+[] 
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [4]
+Overfull \hbox (4.03009pt too wide) in paragraph at lines 458--458
+[] 
+ []
+
+(./1.bbl
+
+! LaTeX Error: Something's wrong--perhaps a missing \item.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.24 \end{thebibliography}
+                          
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+)
+
+** Conference Paper **
+Before submitting the final camera ready copy, remember to:
+
+ 1. Manually equalize the lengths of two columns on the last page
+ of your paper;
+
+ 2. Ensure that any PostScript and/or PDF output post-processing
+ uses only Type 1 fonts and that every step in the generation
+ process uses the appropriate paper size.
+
+[5] (./1.aux) ) 
 Here is how much of TeX's memory you used:
- 4360 strings out of 492995
- 65733 string characters out of 6131752
- 137284 words of memory out of 5000000
- 7862 multiletter control sequences out of 15000+600000
- 31309 words of font info for 79 fonts, out of 8000000 for 9000
+ 4422 strings out of 492995
+ 66522 string characters out of 6131752
+ 148284 words of memory out of 5000000
+ 7908 multiletter control sequences out of 15000+600000
+ 41145 words of font info for 88 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  39i,19n,26p,342b,294s stack positions out of 5000i,500n,10000p,200000b,80000s
-!  ==> Fatal error occurred, no output PDF file produced!
+{d:/Installed/texlive/2017/texmf-dist/fonts/enc/dvips/base/8r.en
+c}<d:/Installed/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.p
+fb><d:/Installed/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.
+pfb><d:/Installed/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.
+pfb><d:/Installed/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.
+pfb><d:/Installed/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.
+pfb><d:/Installed/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.p
+fb><d:/Installed/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.
+pfb><d:/Installed/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.
+pfb><d:/Installed/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/symbols/m
+sam10.pfb><d:/Installed/texlive/2017/texmf-dist/fonts/type1/urw/times/utmb8a.pf
+b><d:/Installed/texlive/2017/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb><d:/I
+nstalled/texlive/2017/texmf-dist/fonts/type1/urw/times/utmr8a.pfb><d:/Installed
+/texlive/2017/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
+Output written on 1.pdf (5 pages, 160232 bytes).
+PDF statistics:
+ 73 PDF objects out of 1000 (max. 8388607)
+ 52 compressed objects within 1 object stream
+ 0 named destinations out of 1000 (max. 500000)
+ 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+

@@ -1,10 +1,10 @@
 %% Graph Generation
 addpath(genpath('Distributed'))
 addpath(genpath('Decentralized'))
-addpath(genpath('Graph'))
+addpath(genpath('..\TypicalDecentralizedQueuingTheory\Graph'))
 clear
 clc
-N = 8;
+N = 15;
 A = [];
 while not (isConnected(A)) 
     A = randomGraph ( N, 0.3 ) ; 
@@ -13,7 +13,7 @@ G = graph(A);
 figure 
 plot(G)
 title('Network Graph')
-nodesForPlot = [7, 5];
+nodesForPlot = 1:N;
 %% Network Configuration
 specRadA = max(eig(A));
 deltaMax = 0.8;
@@ -74,6 +74,7 @@ for t = 1:numofIterations
     end
 end
 %% Plotting Results
+nodesForPlot = [9,15];
 figure
 plot(SDist/max(SDist))
 title('Convergence of Distributed and Decentralized Solutions')
@@ -101,8 +102,8 @@ msg = strings(length(nodesForPlot),1);
 for i=1:length(nodesForPlot)
     n = nodesForPlot(i);
     plot(phiRecord(n,:))
-    msg(i) = sprintf('node %i',n);
-end
+    msg(i) = sprintf('random node %i',n);
+end        
 legend(msg, 'location', 'best')
 hold off
 
@@ -116,7 +117,7 @@ msg = strings(length(nodesForPlot),1);
 for i=1:length(nodesForPlot)
     n = nodesForPlot(i);
     plot(yRecord(n,:))
-    msg(i) = sprintf('node %i',n);
+    msg(i) = sprintf('random node %i',n);
 end
 legend(msg, 'location', 'best')
 hold off
@@ -132,8 +133,8 @@ for i=1:length(nodesForPlot)
     n = nodesForPlot(i);
     plot(betaDist(n,:))
     plot(betaDecent(n,:))
-    msg(2*i-1) = sprintf('node %i Distributed',n);
-    msg(2*i) = sprintf('node %i Decentralized',n);
+    msg(2*i-1) = sprintf('random node %i Distributed',n);
+    msg(2*i) = sprintf('random node %i Decentralized',n);
 end
 legend(msg, 'location', 'best')
 hold off
@@ -149,8 +150,8 @@ for i=1:length(nodesForPlot)
     n = nodesForPlot(i);
     plot(deltaDist(n,:))
     plot(deltaDecent(n,:))
-    msg(2*i-1) = sprintf('node %i Distributed',n);
-    msg(2*i) = sprintf('node %i Decentralized',n);
+    msg(2*i-1) = sprintf('random node %i Distributed',n);
+    msg(2*i) = sprintf('random node %i Decentralized',n);
 end
 legend(msg, 'location', 'best')
 hold off
