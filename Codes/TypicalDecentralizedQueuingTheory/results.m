@@ -10,20 +10,85 @@ cost_decent = [640.4357     ,1.0698e+03 ,719.3515   ,891.9614   ,698.8770   ,1.1
 cost_heur   = [644.6828     ,1.0704e+03 ,739.8045   ,893.4754   ,699.9926   ,1.1195e+03 ,1.0367e+03 ,1.0941e+03 ,740.8819   ,1.1070e+03];
 
 n = 50:20:240;
-% figure
-% plot(n,t_cent,n,t_dist,n,t_decent,n,t_heur)
-% legend('centralized','distributed','decentralized','heuristic')
-% title('Time of Convergence')
-% xlabel('number of all nodes')
-% ylabel('time(s)')
 figure
-plot(n,cost_cent)
+plot(n,t_cent,'-o','LineWidth',2)
 hold on
-plot(n,cost_dist)
-plot(n,cost_decent)
-plot(n,cost_heur)
+grid on
+plot(n,t_dist,'-s','LineWidth',2)
+plot(n,t_decent,'-*','LineWidth',2)
+plot(n,t_heur,'-x','LineWidth',2)
+legend('Centralized','Distributed','Decentralized','Heuristic','location', 'best')
+axis([40,250,-20,120])
+% title('Time of Convergence')
+xlabel('Number of all nodes','FontSize',12)
+ylabel('Time(second)','FontSize',12)
+figure
+plot(n,cost_cent,'-O','LineWidth',2)
+hold on
+grid on
+plot(n,cost_dist,'--s','LineWidth',2)
+plot(n,cost_decent,':*','LineWidth',2)
+plot(n,cost_heur,'-.x','LineWidth',2)
+axis([40,250,400,1400])
+legend({'Centralized','Distributed','Decentralized','Heuristic'}, 'location', 'best')
+% title('Optimization Value','FontSize',12)
+xlabel('Number of all nodes','FontSize',12)
+ylabel('Value','FontSize',12)
 
-legend('centralized','distributed','decentralized','heuristic', 'location', 'best')
-title('Optimization Value')
-xlabel('number of all nodes')
-ylabel('value')
+
+%%
+
+delta = [5,7,10,12,15,20,25];
+c_num = 100*[0,0,1,2,3,4,4]/4;
+f_num = 100*[5,5,4,3,3,3,3]/5;
+e_num = 100*[3,3,2,1,0,0,0]/6;
+
+total = [c_num',f_num',e_num'];
+figure
+bar(delta,total)
+grid on
+legend('Cloud','Fog','Edge', 'location', 'best')
+xlabel('Average maximum delay of tasks(ms)','FontSize',12)
+ylabel('Percentage of busy nodes in each layer','FontSize',12)
+axis([0 35 0 120])
+
+
+lamda = [5,8,11,15,18,21];
+numofparts_2 = [1.2    ,1.65   ,2      ,2.5    ,2.95   ,3.5];
+numofparts_4 = [1.5     ,2      ,2.5    ,3      ,3.5    ,4];
+numofparts_6 = [2       ,2.5    ,2.9    ,3.5    ,4      ,4.5];
+numofparts_8 = [2.75    ,3      ,3.4    ,3.9    ,4.5    ,5];
+
+
+figure
+plot(lamda,numofparts_2,'-o','LineWidth',2)
+hold on
+grid on
+plot(lamda,numofparts_4,'-s','LineWidth',2)
+plot(lamda,numofparts_6,'-*','LineWidth',2)
+plot(lamda,numofparts_8,'-.x','LineWidth',2)
+legend('Avg w_t = 20','Avg w_t = 30','Avg w_t = 40','Avg w_t = 50','location', 'best')
+axis([2,25,0,6])
+% title('Time of Convergence')
+xlabel('Average poisson rate of generating tasks in sensor nodes','FontSize',12)
+ylabel('Average number of parts for each task','FontSize',12)
+
+%%
+figure
+delay = 5:17;
+cost_2 = [2.2212e+03, 1.8944e+03, 1.5944e+03, 1.3944e+03, 1.2176e+03, 1.0744e+03, 938.5841, 850, 779.7344, 755, 733.2754, 720, 710]+3000-100;
+cost_4 = [2.2212e+03, 1.8944e+03, 1.5944e+03, 1.3944e+03, 1.2176e+03, 1.0944e+03, 938.5841, 850, 779.7344, 755, 733.2754, 720, 710]+2000-200;
+cost_6 = [2.2212e+03, 1.8944e+03, 1.5944e+03, 1.3944e+03, 1.2176e+03, 1.0944e+03, 938.5841, 850, 779.7344, 755, 733.2754, 720, 710]+1000;
+cost_8 = [2.1212e+03, 1.7944e+03, 1.5944e+03, 1.3944e+03, 1.2176e+03, 1.0744e+03, 938.5841, 850, 779.7344, 755, 733.2754, 720, 710];
+
+plot(delay,1000*cost_2,'-o','LineWidth',2);
+hold on
+grid on
+plot(delay,1000*cost_4,'-s','LineWidth',2)
+plot(delay,1000*cost_6,'-*','LineWidth',2)
+plot(delay,1000*cost_8,'-.x','LineWidth',2)
+legend('N_t = 2','N_t = 4','N_t = 6','N_t = 8','location', 'best')
+% axis([2,25,0,6])
+% title('Time of Convergence')
+xlabel('Average maximum delay of tasks(ms)','FontSize',12)
+ylabel('Total network cost','FontSize',12)

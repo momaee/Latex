@@ -6,7 +6,7 @@ l_c = 3;
 l_f = 4;
 l_e = 5;
 l_s = 5;
-l_t = 5;%%%%%increase l_t
+l_t = 15;%%%%%increase l_t
 l_l = l_c + l_f + l_e;
 
 N_r = 3; %index1:CPU, index2:Storage, index3:RAM  

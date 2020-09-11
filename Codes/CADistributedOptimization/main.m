@@ -76,12 +76,12 @@ end
 %% Plotting Results
 nodesForPlot = [9,15];
 figure
-plot(SDist/max(SDist))
-title('Convergence of Distributed and Decentralized Solutions')
-xlabel('iterations')
-ylabel('normalized sum of deviations across local estimations')
+plot(SDist/max(SDist),'-s','LineWidth',2)
+% title('Convergence of Distributed and Decentralized Solutions')
+xlabel('Iterations','FontSize',12)
+ylabel('Normalized error at each iteration','FontSize',12)
 hold on
-plot(SDecent/max(SDecent))
+plot(SDecent/max(SDecent),'-*','LineWidth',2)
 legend('Distributed', 'Decentralized', 'location', 'best')
 grid on
 hold off
@@ -95,22 +95,22 @@ fprintf('DFE parameter of decentralized solution that should be less than minus 
 figure
 grid on
 hold on
-title('Convergence of Distributed Solution')
-xlabel('iterations')
-ylabel('magnitude of \phi(t)')    
+% title('Convergence of Distributed Solution')
+xlabel('Iterations','FontSize',12)
+ylabel('Normalized absolute value of local variables','FontSize',12)    
 msg = strings(length(nodesForPlot),1);
 for i=1:length(nodesForPlot)
     n = nodesForPlot(i);
-    plot(phiRecord(n,:))
+    plot(10*(phiRecord(n,:)-min(phiRecord(n,:))))
     msg(i) = sprintf('random node %i',n);
 end        
 legend(msg, 'location', 'best')
 hold off
 
 figure 
-title('Convergence of Decentralized Solutions')
-xlabel('iterations')
-ylabel('magnitude of y(t)')
+% title('Convergence of Decentralized Solutions')
+xlabel('iterations','FontSize',12)
+ylabel('Normalized absolute value of lagrangian coefficients','FontSize',12)
 grid on
 hold on
 msg = strings(length(nodesForPlot),1);
@@ -122,34 +122,34 @@ end
 legend(msg, 'location', 'best')
 hold off
 
-figure 
-title('Convergence of Distributed and Decentralized Solutions')
-xlabel('iterations')
-ylabel('beta of nodes')
-hold on
-grid on
-msg = strings(2*length(nodesForPlot),1);
-for i=1:length(nodesForPlot)
-    n = nodesForPlot(i);
-    plot(betaDist(n,:))
-    plot(betaDecent(n,:))
-    msg(2*i-1) = sprintf('random node %i Distributed',n);
-    msg(2*i) = sprintf('random node %i Decentralized',n);
-end
-legend(msg, 'location', 'best')
-hold off
+% figure 
+% title('Convergence of Distributed and Decentralized Solutions')
+% xlabel('iterations')
+% ylabel('beta of nodes')
+% hold on
+% grid on
+% msg = strings(2*length(nodesForPlot),1);
+% for i=1:length(nodesForPlot)
+%     n = nodesForPlot(i);
+%     plot(betaDist(n,:))
+%     plot(betaDecent(n,:))
+%     msg(2*i-1) = sprintf('random node %i Distributed',n);
+%     msg(2*i) = sprintf('random node %i Decentralized',n);
+% end
+% legend(msg, 'location', 'best')
+% hold off
 
 figure 
-title('Convergence of Distributed and Decentralized Solutions')
-xlabel('iterations')
-ylabel('delta of nodes')
+% title('Convergence of Distributed and Decentralized Solutions')
+xlabel('Iterations','FontSize',12)
+ylabel('Normalized absolute value of local variables','FontSize',12)    
 hold on
 grid on
 msg = strings(2*length(nodesForPlot),1);
 for i=1:length(nodesForPlot)
     n = nodesForPlot(i);
-    plot(deltaDist(n,:))
-    plot(deltaDecent(n,:))
+    plot(deltaDist(n,:),'-s','LineWidth',2)
+    plot(deltaDecent(n,:),'-*','LineWidth',2)
     msg(2*i-1) = sprintf('random node %i Distributed',n);
     msg(2*i) = sprintf('random node %i Decentralized',n);
 end

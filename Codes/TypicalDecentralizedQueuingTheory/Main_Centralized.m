@@ -1,16 +1,16 @@
 addpath(genpath('Graph'))
-addpath D:\Installed\Mosek\9.1\toolbox\r2015a
+addpath C:\\'Program Files\'\Mosek\9.2\toolbox\R2015a
 clear
 clc
 
-l_c = 1+0;
-l_f = 2+0;
-l_e = 3+0;
-l_s = 2+0;
-l_t = 5;
+l_c = 1+3;
+l_f = 2+3;
+l_e = 3+3;
+l_s = 2+3;
+l_t = 6;
 l_n = l_c + l_f + l_e;
 
-N_r = 3; %index1:CPU, index2:Storage, index3:RAM  
+N_r = 6; %index1:CPU, index2:Storage, index3:RAM  
 CPU = 1;
 STRG = 2;
 RAM = 3;
@@ -19,18 +19,18 @@ RAM = 3;
 % cap_f = 90+zeros(l_f, N_r);
 % cap_e = 80+zeros(l_e, N_r);
 
-cap_c = 100+rand(l_c, N_r);
-cap_f = 90+rand(l_f, N_r);
-cap_e = 80+rand(l_e, N_r);
+cap_c = 200+rand(l_c, N_r);
+cap_f = 180+rand(l_f, N_r);
+cap_e = 160+rand(l_e, N_r);
 
 cap_n = [cap_c; cap_f; cap_e];
 
 % delta_t = 30+zeros(l_t,1);%%%%
 % w_t = 4+zeros(l_t,1);%%%%%%%%
 
-delta_t = 30+rand(l_t,1);%%%%
+delta_t = 17+rand(l_t,1);%%%%
 w_t = 4+rand(l_t,1);%%%%%%%%
-N_t = 3+zeros(l_t,1); %%%%more better
+N_t = 1+zeros(l_t,1); %%%%more better
 
 k1_t = zeros(l_t,N_r);
 k2_t = zeros(l_t,N_r);
@@ -67,7 +67,7 @@ pri_n = [pri_c; pri_f; pri_e];
 % tauTr_e = 2+zeros(l_e, 1);
 
 tauTr_c = 10+rand(l_c, 1);
-tauTr_f = 4+rand(l_f, 1);
+tauTr_f = 5+rand(l_f, 1);
 tauTr_e = 2+rand(l_e, 1);
 
 tauTr_n = [tauTr_c; tauTr_f; tauTr_e];
@@ -456,7 +456,7 @@ for n = 1 : H
     
     if tau_t_u_l(t,u,P(n)+1) > delta_t(t)
         if P(n) ~= 0
-            disp('jjjjjjjjjjjjj');
+%             disp('jjjjjjjjjjjjj');
             x(t,P(n)) = 0;
             lambda(t,P(n)) = 0;
         end
@@ -473,6 +473,6 @@ end
 P;
 H;
 lambda_t_u_l(:,:,1);
-x
-cost2
+x;
+cost2;
 toc
