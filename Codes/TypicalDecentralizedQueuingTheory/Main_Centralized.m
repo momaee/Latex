@@ -3,11 +3,11 @@ addpath C:\\'Program Files\'\Mosek\9.2\toolbox\R2015a
 clear
 clc
 
-l_c = 1+3;
-l_f = 2+3;
-l_e = 3+3;
-l_s = 2+3;
-l_t = 6;
+l_c = 1+0;
+l_f = 2+0;
+l_e = 3+0;
+l_s = 2+0;
+l_t = 10;
 l_n = l_c + l_f + l_e;
 
 N_r = 6; %index1:CPU, index2:Storage, index3:RAM  
